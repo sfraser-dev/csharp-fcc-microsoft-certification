@@ -142,6 +142,28 @@ namespace Program
 
             Console.WriteLine($"\nFinal GPA:\t\t\t{leadingDigit}.{firstDigit}{secondDigit}");
 
+            Console.WriteLine("\n############################ If/else challenge\n");
+
+            Random random = new Random();
+            int daysUntilExpiration = random.Next(12);
+            int discountPercentage = 0;
+
+            if (daysUntilExpiration < 1) {
+                System.Console.WriteLine("Your subscription has expired.");
+            }
+            else if (daysUntilExpiration == 1) {
+                System.Console.WriteLine("Your subscription expires within a day!\nRenew now and save 20%!");
+            }
+            else if (daysUntilExpiration <= 5) {
+                System.Console.WriteLine($"Your subscription expires in {daysUntilExpiration}.\nRenew now and save 10%!");
+            }
+            else if (daysUntilExpiration <= 10) {
+                System.Console.WriteLine("Your subscription will expire soon. Renew now!");
+            }
+            if (discountPercentage > 0) {
+                System.Console.WriteLine($"Renew now and save {discountPercentage}%.");
+            }
+
             Console.WriteLine("\n############################ Decimal Type\n");
 
             decimal x = 7 / 5;
@@ -221,6 +243,35 @@ namespace Program
             Console.WriteLine($"First: {fraudulentOrderIDs[0]}");
             Console.WriteLine($"Second: {fraudulentOrderIDs[1]}");
             Console.WriteLine($"Third: {fraudulentOrderIDs[2]}");
+
+            // change an elements value
+            fraudulentOrderIDs[0] = "F000";
+            Console.WriteLine($"Reassign First: {fraudulentOrderIDs[0]}");
+
+            // array initialisation
+            string[] fraudulentOrderIDs2 = { "A123", "B456", "C789" };
+            Console.WriteLine($"There are {fraudulentOrderIDs2.Length} fraudulent orders to process.");
+
+            // looping through array with foreach
+            string[] names = { "Rowena", "Robin", "Bao" };
+            foreach (string name in names)
+            {
+                Console.WriteLine(name);
+            }
+            int[] inventory = { 200, 450, 700, 175, 250 };
+            int sum = 0;
+            int bin = 0;
+            foreach (int items in inventory)
+            {
+                sum += items;
+                bin++;
+                Console.WriteLine($"Bin {bin} = {items} items (Running total: {sum})");
+            }
+            Console.WriteLine($"We have {sum} items in inventory.");
+
+
+
+
         }
     }
 }
