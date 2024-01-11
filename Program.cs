@@ -375,15 +375,15 @@ namespace Program
 
             Console.WriteLine("\n############################ Calc Student Scores Using Arrays, Foreach & Function\n");
 
-            int[] sophiaScores = new int[] { 90, 86, 87, 98, 100 };
-            int[] andrewScores = new int[] { 92, 89, 81, 96, 90 };
-            int[] emmaScores = new int[] { 90, 85, 87, 98, 68 };
-            int[] loganScores = new int[] { 90, 95, 87, 88, 96 };
+            int[] sophiaScoresArr = new int[] { 90, 86, 87, 98, 100 };
+            int[] andrewScoresArr = new int[] { 92, 89, 81, 96, 90 };
+            int[] emmaScoresArr = new int[] { 90, 85, 87, 98, 68 };
+            int[] loganScoresArr = new int[] { 90, 95, 87, 88, 96 };
 
-            sophiaScore = getStudentScore(sophiaScores, sophiaScores.Length, currentAssignments);
-            andrewScore = getStudentScore(andrewScores, andrewScores.Length, currentAssignments);
-            emmaScore = getStudentScore(emmaScores, emmaScores.Length, currentAssignments);
-            loganScore = getStudentScore(loganScores, loganScores.Length, currentAssignments);
+            sophiaScore = getStudentScore(sophiaScoresArr, sophiaScoresArr.Length, currentAssignments);
+            andrewScore = getStudentScore(andrewScoresArr, andrewScoresArr.Length, currentAssignments);
+            emmaScore = getStudentScore(emmaScoresArr, emmaScoresArr.Length, currentAssignments);
+            loganScore = getStudentScore(loganScoresArr, loganScoresArr.Length, currentAssignments);
 
             Console.WriteLine("Student\t\tGrade\n");
             Console.WriteLine("Sophia:\t\t" + sophiaScore + "\t?");
@@ -393,6 +393,51 @@ namespace Program
 
             Console.WriteLine("Press the Enter key to continue");
             Console.ReadLine();
+
+            Console.WriteLine("\n############################ Extra Credits\n");
+
+            sophiaScoresArr = myAppendArr(sophiaScoresArr, [94, 90]);
+            andrewScoresArr = myAppendArr(andrewScoresArr, [89]);
+            emmaScoresArr = myAppendArr(emmaScoresArr, [89, 89, 89]);
+            loganScoresArr = myAppendArr(loganScoresArr, [96]);
+            printArray(sophiaScoresArr);
+            printArray(andrewScoresArr);
+            printArray(emmaScoresArr);
+            printArray(loganScoresArr);
+        }
+
+        static void printArray(int[] arr)
+        {
+            foreach (int e in arr)
+            {
+                Console.Write(e + " ");
+            }
+            Console.WriteLine();
+        }
+
+        // append an array by converting it to a list and concatenting a new list onto it.
+        //
+        // arrays are passed by reference to functions. the reference is COPIED (ie:
+        // "refFuncLocal" stores the same "address" as "refArgIn") - "refFuncLocal" and
+        // "refArgIn" reference the SAME object and we can change this object in and out
+        // of the function. but if we CHANGE what "refFuncLocal" is referencing, then 
+        // the change won't be seen outwith the function by "refArgIn" 
+        static int[] myAppendArr(int[] arrIn, int[] newVals)
+        {
+            var list = arrIn.ToList();
+            // spread operator
+            List<int> tempAdd = [.. newVals];
+            list.ForEach(e => Console.Write(e + " "));
+            Console.WriteLine();
+            list.AddRange(tempAdd);
+            // arrIn is "refFuncLocal" and it's getting reassigned here. "refFuncLocal"
+            // and "refArgIn" are now referencing different arrays. the appending of 
+            // "refFuncLocal" will not be seen outwith this function by "refArgIn"!
+            //arrIn = list.ToArray(); 
+            var arrOut = list.ToArray();
+            printArray(arrOut);
+            Console.WriteLine();
+            return arrOut;
         }
 
         static decimal getStudentScore(int[] arr, int len, int curAss)
