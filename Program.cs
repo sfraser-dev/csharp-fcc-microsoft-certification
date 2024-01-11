@@ -2,6 +2,9 @@
 // cl-> class FileName {}
 // svm-> static void Main(string[] args) (only when inside a class or struct)
 // cw-> System.Console.WriteLine();
+// wl-> Console.WriteLine(); (my own snippet)
+
+using System.Linq.Expressions;
 
 namespace Program
 {
@@ -39,7 +42,7 @@ namespace Program
             Console.WriteLine("\n############################ Calc Grades of Students\n");
 
             // initialize variables - graded assignments 
-            int currentAssignments = 5;
+            int curAssignments = 5;
 
             int sophia1 = 93;
             int sophia2 = 87;
@@ -70,10 +73,10 @@ namespace Program
             int jeongSum = jeong1 + jeong2 + jeong3 + jeong4 + jeong5;
 
             // average score
-            decimal sophiaScore = (decimal)sophiaSum / currentAssignments;
-            decimal nicolasScore = (decimal)nicolasSum / currentAssignments;
-            decimal zahirahScore = (decimal)zahirahSum / currentAssignments;
-            decimal jeongScore = (decimal)jeongSum / currentAssignments;
+            decimal sophiaScore = (decimal)sophiaSum / curAssignments;
+            decimal nicolasScore = (decimal)nicolasSum / curAssignments;
+            decimal zahirahScore = (decimal)zahirahSum / curAssignments;
+            decimal jeongScore = (decimal)jeongSum / curAssignments;
 
             // print the total score
             Console.WriteLine("Sophia: " + sophiaSum);
@@ -148,20 +151,25 @@ namespace Program
             int daysUntilExpiration = random.Next(12);
             int discountPercentage = 0;
 
-            if (daysUntilExpiration < 1) {
-                System.Console.WriteLine("Your subscription has expired.");
+            if (daysUntilExpiration < 1)
+            {
+                Console.WriteLine("Your subscription has expired.");
             }
-            else if (daysUntilExpiration == 1) {
-                System.Console.WriteLine("Your subscription expires within a day!\nRenew now and save 20%!");
+            else if (daysUntilExpiration == 1)
+            {
+                Console.WriteLine("Your subscription expires within a day!\nRenew now and save 20%!");
             }
-            else if (daysUntilExpiration <= 5) {
-                System.Console.WriteLine($"Your subscription expires in {daysUntilExpiration}.\nRenew now and save 10%!");
+            else if (daysUntilExpiration <= 5)
+            {
+                Console.WriteLine($"Your subscription expires in {daysUntilExpiration}.\nRenew now and save 10%!");
             }
-            else if (daysUntilExpiration <= 10) {
-                System.Console.WriteLine("Your subscription will expire soon. Renew now!");
+            else if (daysUntilExpiration <= 10)
+            {
+                Console.WriteLine("Your subscription will expire soon. Renew now!");
             }
-            if (discountPercentage > 0) {
-                System.Console.WriteLine($"Renew now and save {discountPercentage}%.");
+            if (discountPercentage > 0)
+            {
+                Console.WriteLine($"Renew now and save {discountPercentage}%.");
             }
 
             Console.WriteLine("\n############################ Decimal Type\n");
@@ -213,7 +221,7 @@ namespace Program
             else
             {
                 Console.WriteLine("no doubles or trebles :(");
-                System.Console.WriteLine();
+                Console.WriteLine();
             }
 
             // results of dice game
@@ -269,9 +277,133 @@ namespace Program
             }
             Console.WriteLine($"We have {sum} items in inventory.");
 
+            Console.WriteLine("\n############################ Nested Iteration\n");
+            string[] fraudulentOrderID3 = { "B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179" };
+            foreach (string s in fraudulentOrderID3)
+            {
+                if (s.StartsWith("B"))
+                {
+                    Console.WriteLine($"The name {s} starts with 'B'!");
+                }
+            }
 
+            Console.WriteLine("\n############################ Code Readability\n");
 
+            /*
+                This code reverses a message, counts the number of times 
+                a particular character appears, then prints the results
+                to the console window.
+             */
 
+            string originalMessage = "The quick brown fox jumps over the lazy dog.";
+
+            char[] message = originalMessage.ToCharArray();
+            Array.Reverse(message);
+
+            int letterCount = 0;
+
+            foreach (char letter in message)
+            {
+                if (letter == 'o')
+                {
+                    letterCount++;
+                }
+            }
+
+            string newMessage = new String(message);
+
+            Console.WriteLine(originalMessage);
+            Console.WriteLine(newMessage);
+            Console.WriteLine($"'o' appears {letterCount} times.");
+
+            Console.WriteLine("\n############################ Calc Student Scores Simply\n");
+
+            // initialize variables - graded assignments 
+            int currentAssignments = 5;
+
+            sophia1 = 90;
+            sophia2 = 86;
+            sophia3 = 87;
+            sophia4 = 98;
+            sophia5 = 100;
+
+            int andrew1 = 92;
+            int andrew2 = 89;
+            int andrew3 = 81;
+            int andrew4 = 96;
+            int andrew5 = 90;
+
+            int emma1 = 90;
+            int emma2 = 85;
+            int emma3 = 87;
+            int emma4 = 98;
+            int emma5 = 68;
+
+            int logan1 = 90;
+            int logan2 = 95;
+            int logan3 = 87;
+            int logan4 = 88;
+            int logan5 = 96;
+
+            sophiaSum = 0;
+            int andrewSum = 0;
+            int emmaSum = 0;
+            int loganSum = 0;
+
+            decimal andrewScore;
+            decimal emmaScore;
+            decimal loganScore;
+
+            sophiaSum = sophia1 + sophia2 + sophia3 + sophia4 + sophia5;
+            andrewSum = andrew1 + andrew2 + andrew3 + andrew4 + andrew5;
+            emmaSum = emma1 + emma2 + emma3 + emma4 + emma5;
+            loganSum = logan1 + logan2 + logan3 + logan4 + logan5;
+
+            sophiaScore = (decimal)sophiaSum / currentAssignments;
+            andrewScore = (decimal)andrewSum / currentAssignments;
+            emmaScore = (decimal)emmaSum / currentAssignments;
+            loganScore = (decimal)loganSum / currentAssignments;
+
+            Console.WriteLine("Student\t\tGrade\n");
+            Console.WriteLine("Sophia:\t\t" + sophiaScore + "\tA-");
+            Console.WriteLine("Andrew:\t\t" + andrewScore + "\tB+");
+            Console.WriteLine("Emma:\t\t" + emmaScore + "\tB");
+            Console.WriteLine("Logan:\t\t" + loganScore + "\tA-");
+
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("\n############################ Calc Student Scores Using Arrays, Foreach & Function\n");
+
+            int[] sophiaScores = new int[] { 90, 86, 87, 98, 100 };
+            int[] andrewScores = new int[] { 92, 89, 81, 96, 90 };
+            int[] emmaScores = new int[] { 90, 85, 87, 98, 68 };
+            int[] loganScores = new int[] { 90, 95, 87, 88, 96 };
+
+            sophiaScore = getStudentScore(sophiaScores, sophiaScores.Length, currentAssignments);
+            andrewScore = getStudentScore(andrewScores, andrewScores.Length, currentAssignments);
+            emmaScore = getStudentScore(emmaScores, emmaScores.Length, currentAssignments);
+            loganScore = getStudentScore(loganScores, loganScores.Length, currentAssignments);
+
+            Console.WriteLine("Student\t\tGrade\n");
+            Console.WriteLine("Sophia:\t\t" + sophiaScore + "\t?");
+            Console.WriteLine("Andrew:\t\t" + andrewScore + "\t?");
+            Console.WriteLine("Emma:\t\t" + emmaScore + "\t?");
+            Console.WriteLine("Logan:\t\t" + loganScore + "\t?");
+
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
         }
+
+        static decimal getStudentScore(int[] arr, int len, int curAss)
+        {
+            int sum = 0;
+            foreach (int e in arr)
+            {
+                sum += e;
+            }
+            return (decimal)sum / curAss;
+        }
+
     }
 }
