@@ -243,11 +243,7 @@ namespace Program
 
             Console.WriteLine("\n############################ Arrays\n");
 
-            string[] fraudulentOrderIDs = new string[3];
-            fraudulentOrderIDs[0] = "A123";
-            fraudulentOrderIDs[1] = "B456";
-            fraudulentOrderIDs[2] = "C789";
-
+            string[] fraudulentOrderIDs = ["A123", "B456", "C789"];
             Console.WriteLine($"First: {fraudulentOrderIDs[0]}");
             Console.WriteLine($"Second: {fraudulentOrderIDs[1]}");
             Console.WriteLine($"Third: {fraudulentOrderIDs[2]}");
@@ -257,16 +253,16 @@ namespace Program
             Console.WriteLine($"Reassign First: {fraudulentOrderIDs[0]}");
 
             // array initialisation
-            string[] fraudulentOrderIDs2 = { "A123", "B456", "C789" };
+            string[] fraudulentOrderIDs2 = ["A123", "B456", "C789"];
             Console.WriteLine($"There are {fraudulentOrderIDs2.Length} fraudulent orders to process.");
 
             // looping through array with foreach
-            string[] names = { "Rowena", "Robin", "Bao" };
+            string[] names = ["Rowena", "Robin", "Bao"];
             foreach (string name in names)
             {
                 Console.WriteLine(name);
             }
-            int[] inventory = { 200, 450, 700, 175, 250 };
+            int[] inventory = [200, 450, 700, 175, 250];
             int sum = 0;
             int bin = 0;
             foreach (int items in inventory)
@@ -278,7 +274,7 @@ namespace Program
             Console.WriteLine($"We have {sum} items in inventory.");
 
             Console.WriteLine("\n############################ Nested Iteration\n");
-            string[] fraudulentOrderID3 = { "B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179" };
+            string[] fraudulentOrderID3 = ["B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179"];
             foreach (string s in fraudulentOrderID3)
             {
                 if (s.StartsWith("B"))
@@ -375,10 +371,10 @@ namespace Program
 
             Console.WriteLine("\n############################ Calc Student Scores Using Arrays, Foreach & Function\n");
 
-            int[] sophiaScoresArr = new int[] { 90, 86, 87, 98, 100 };
-            int[] andrewScoresArr = new int[] { 92, 89, 81, 96, 90 };
-            int[] emmaScoresArr = new int[] { 90, 85, 87, 98, 68 };
-            int[] loganScoresArr = new int[] { 90, 95, 87, 88, 96 };
+            int[] sophiaScoresArr = [90, 86, 87, 98, 100];
+            int[] andrewScoresArr = [92, 89, 81, 96, 90];
+            int[] emmaScoresArr = [90, 85, 87, 98, 68];
+            int[] loganScoresArr = [90, 95, 87, 88, 96];
 
             sophiaScore = getStudentScore(sophiaScoresArr, sophiaScoresArr.Length, currentAssignments);
             andrewScore = getStudentScore(andrewScoresArr, andrewScoresArr.Length, currentAssignments);
@@ -396,14 +392,104 @@ namespace Program
 
             Console.WriteLine("\n############################ Extra Credits\n");
 
-            sophiaScoresArr = myAppendArr(sophiaScoresArr, [94, 90]);
-            andrewScoresArr = myAppendArr(andrewScoresArr, [89]);
-            emmaScoresArr = myAppendArr(emmaScoresArr, [89, 89, 89]);
-            loganScoresArr = myAppendArr(loganScoresArr, [96]);
-            printArray(sophiaScoresArr);
-            printArray(andrewScoresArr);
-            printArray(emmaScoresArr);
-            printArray(loganScoresArr);
+            // existing students, appending extra credits
+            sophiaScoresArr = myAppendArr(sophiaScoresArr, [94, 90], "sophia");
+            andrewScoresArr = myAppendArr(andrewScoresArr, [89], "andrew");
+            emmaScoresArr = myAppendArr(emmaScoresArr, [89, 89, 89], "emma ");
+            loganScoresArr = myAppendArr(loganScoresArr, [96], "logan");
+            // new students just added
+            int[] beckyScoresArr = new int[] { 92, 91, 90, 91, 92, 92, 92 };
+            int[] chrisScoresArr = new int[] { 84, 86, 88, 90, 92, 94, 96, 98 };
+            int[] ericScoresArr = new int[] { 80, 90, 100, 80, 90, 100, 80, 90 };
+            int[] gregorScoresArr = new int[] { 91, 91, 91, 91, 91, 91, 91 };
+
+            // existing students (tuple returns!)
+            Console.WriteLine("Student\t\tGrade\tGrade Letter");
+            (decimal sophiaGrade, string sophiaLetterGrade) = getStudentGrade(sophiaScoresArr);
+            Console.WriteLine($"sophia\t\t{sophiaGrade}\t{sophiaLetterGrade}");
+            (decimal andrewGrade, string andrewLetterGrade) = getStudentGrade(andrewScoresArr);
+            Console.WriteLine($"sophia\t\t{andrewGrade}\t{andrewLetterGrade}");
+            (decimal emmaGrade, string emmaLetterGrade) = getStudentGrade(emmaScoresArr);
+            Console.WriteLine($"emma\t\t{emmaGrade}\t{emmaLetterGrade}");
+            (decimal loganGrade, string loganLetterGrade) = getStudentGrade(loganScoresArr);
+            Console.WriteLine($"logan\t\t{loganGrade}\t{loganLetterGrade}");
+
+            // new students (tuple returns!)
+            (decimal beckyGrade, string beckyLetterGrade) = getStudentGrade(beckyScoresArr);
+            Console.WriteLine($"becky\t\t{beckyGrade}\t{beckyLetterGrade}");
+            (decimal chrisGrade, string chrisLetterGrade) = getStudentGrade(chrisScoresArr);
+            Console.WriteLine($"chris\t\t{chrisGrade}\t{chrisLetterGrade}");
+            (decimal ericGrade, string ericLetterGrade) = getStudentGrade(ericScoresArr);
+            Console.WriteLine($"eric\t\t{ericGrade}\t{ericLetterGrade}");
+            (decimal gregorGrade, string gregorLetterGrade) = getStudentGrade(gregorScoresArr);
+            Console.WriteLine($"gregor\t\t{gregorGrade}\t{gregorLetterGrade}");
+
+            Console.WriteLine("\n\rPress the Enter key to continue");
+            Console.ReadLine();
+        }
+
+        // tuple return type (tuple can contain different types)
+        static (decimal, string) getStudentGrade(int[] studentScores)
+        {
+            int examAssignments = 5;
+            int sumAssignmentScores = 0;
+            int gradedAssignments = 0;
+            string currentStudentLetterGrade = "Z";
+
+            foreach (int score in studentScores)
+            {
+                gradedAssignments += 1;
+                if (gradedAssignments <= examAssignments)
+                    // add the exam score to the sum
+                    sumAssignmentScores += score;
+                else
+                    // add the extra credit points to the sum - bonus points equal to 10% of an exam score
+                    sumAssignmentScores += score / 10;
+            }
+            // initialize/reset the calculated average of exam + extra credit scores
+            decimal currentStudentGrade = (decimal)sumAssignmentScores / examAssignments;
+
+            if (currentStudentGrade >= 97)
+                currentStudentLetterGrade = "A+";
+
+            else if (currentStudentGrade >= 93)
+                currentStudentLetterGrade = "A";
+
+            else if (currentStudentGrade >= 90)
+                currentStudentLetterGrade = "A-";
+
+            else if (currentStudentGrade >= 87)
+                currentStudentLetterGrade = "B+";
+
+            else if (currentStudentGrade >= 83)
+                currentStudentLetterGrade = "B";
+
+            else if (currentStudentGrade >= 80)
+                currentStudentLetterGrade = "B-";
+
+            else if (currentStudentGrade >= 77)
+                currentStudentLetterGrade = "C+";
+
+            else if (currentStudentGrade >= 73)
+                currentStudentLetterGrade = "C";
+
+            else if (currentStudentGrade >= 70)
+                currentStudentLetterGrade = "C-";
+
+            else if (currentStudentGrade >= 67)
+                currentStudentLetterGrade = "D+";
+
+            else if (currentStudentGrade >= 63)
+                currentStudentLetterGrade = "D";
+
+            else if (currentStudentGrade >= 60)
+                currentStudentLetterGrade = "D-";
+
+            else
+                currentStudentLetterGrade = "F";
+
+            return (currentStudentGrade, currentStudentLetterGrade);
+
         }
 
         static void printArray(int[] arr)
@@ -422,12 +508,12 @@ namespace Program
         // "refArgIn" reference the SAME object and we can change this object in and out
         // of the function. but if we CHANGE what "refFuncLocal" is referencing, then 
         // the change won't be seen outwith the function by "refArgIn" 
-        static int[] myAppendArr(int[] arrIn, int[] newVals)
+        static int[] myAppendArr(int[] arrIn, int[] newVals, string name)
         {
             var list = arrIn.ToList();
-            // spread operator
-            List<int> tempAdd = [.. newVals];
-            list.ForEach(e => Console.Write(e + " "));
+            List<int> tempAdd = [.. newVals]; // spread operator 
+            Console.Write($"{name}'s original scores:\t");
+            list.ForEach(e => Console.Write(e + " "));  // lambda
             Console.WriteLine();
             list.AddRange(tempAdd);
             // arrIn is "refFuncLocal" and it's getting reassigned here. "refFuncLocal"
@@ -435,6 +521,7 @@ namespace Program
             // "refFuncLocal" will not be seen outwith this function by "refArgIn"!
             //arrIn = list.ToArray(); 
             var arrOut = list.ToArray();
+            Console.Write($"{name}'s extra credit scores:\t");
             printArray(arrOut);
             Console.WriteLine();
             return arrOut;
