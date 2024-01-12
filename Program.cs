@@ -821,7 +821,7 @@ namespace Program
                 Console.WriteLine(valueY);
                 Console.WriteLine("");
 
-                // TryParse
+                // TryParse, try parsing a string to a variable (usually use out keyword too)
                 string value = "102";
                 int result = 0;
                 if (int.TryParse(value, out result))
@@ -834,6 +834,28 @@ namespace Program
                 }
                 Console.WriteLine($"Measurement (w/ offset): {50 + result}");
                 Console.WriteLine("");
+
+                // combining string array values as strings and as integers
+                Console.WriteLine("grabbing possible numbers in an array of strings:");
+                string[] valuesAA = { "12.3", "45", "ABC", "11", "DEF" };
+                decimal totalAA = 0m;
+                string messageAA = "";
+                foreach (var valueAA in valuesAA)
+                {
+                    decimal numberAA; // stores the TryParse "out" value
+                    // attempt to convert element to a number
+                    if (decimal.TryParse(valueAA, out numberAA))
+                    {
+                        totalAA += numberAA;
+                    }
+                    // treat as string
+                    else 
+                    {
+                        messageAA += valueAA;
+                    }
+                }
+                Console.WriteLine($"Message: {messageAA}");
+                Console.WriteLine($"Total: {totalAA}");
             }
         }
     }
