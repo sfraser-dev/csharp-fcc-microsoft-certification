@@ -1,8 +1,13 @@
-﻿// vscode snippets
+﻿//-- default vscode snippets
 // cl-> class FileName {}
 // svm-> static void Main(string[] args) (only when inside a class or struct)
 // cw-> System.Console.WriteLine();
-// wl-> Console.WriteLine(); (my own snippet)
+
+//-- my vscode snippets
+// wl-> Console.WriteLine(""); 
+// wi-> Console.WriteLine($"{val}"); 
+// swl-> System.Console.WriteLine(""); 
+// swi-> System.Console.WriteLine($"{val}"); 
 
 namespace Program
 {
@@ -867,7 +872,6 @@ namespace Program
                 Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {result2}");
                 float result3 = value3 / value1;
                 Console.WriteLine($"Divide value3 by value1, display the result as a float: {result3}");
-
             }
         }
     }
