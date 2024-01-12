@@ -672,6 +672,169 @@ namespace Program
                 else
                     Console.WriteLine($"{i,3}");
             }
+
+            Console.WriteLine("\n############################ Do While Statement\n");
+
+            int hero = 10;
+            int monster = 10;
+            Random dice = new Random();
+            do
+            {
+                int roll = dice.Next(1, 11);
+                monster -= roll;
+                Console.WriteLine($"Monster was damaged and lost {roll} health and now has {monster} health.");
+
+                if (monster <= 0) continue;
+
+                roll = dice.Next(1, 11);
+                hero -= roll;
+                Console.WriteLine($"Hero was damaged and lost {roll} health and now has {hero} health.");
+
+            } while (hero > 0 && monster > 0);
+
+            Console.WriteLine(hero > monster ? "Hero wins!" : "Monster wins!");
+
+            // project 1
+            string? readResult;
+            string valueEntered = "";
+            Console.WriteLine("Enter an integer value between 5 and 10");
+            int numValue;
+            bool validNumber;
+            do
+            {
+                readResult = Console.ReadLine();
+                if (readResult != null)
+                {
+                    valueEntered = readResult;
+                }
+
+                validNumber = int.TryParse(valueEntered, out numValue);
+
+                if (validNumber == true)
+                {
+                    if (numValue <= 5 || numValue >= 10)
+                    {
+                        validNumber = false;
+                        Console.WriteLine($"You entered {numValue}. Please enter a number between 5 and 10.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Sorry, you entered an invalid number, please try again");
+                }
+            } while (validNumber == false);
+
+            Console.WriteLine($"Your input value ({numValue}) has been accepted.");
+
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            // project 2
+            string? readResult2; // string readResult2 is a nullable type (string?)
+            string roleName = "";
+            bool validEntry = false;
+            do
+            {
+                Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+                readResult2 = Console.ReadLine();
+                if (readResult2 != null)
+                {
+                    roleName = readResult2.Trim();
+                }
+
+                if (roleName.ToLower() == "administrator" || roleName.ToLower() == "manager" || roleName.ToLower() == "user")
+                {
+                    validEntry = true;
+                }
+                else
+                {
+                    Console.Write($"The role name that you entered, \"{roleName}\" is not valid. ");
+                }
+
+            } while (validEntry == false);
+            Console.WriteLine($"Your input value ({roleName}) has been accepted.");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            // project 3
+            string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+            int stringsCount = myStrings.Length;
+            for (int i = 0; i < stringsCount; i++)
+            {
+                string myString = myStrings[i];
+                int periodLocation = myString.IndexOf(".");
+                string mySentence;
+                // extract sentences from each string and display them one at a time
+                while (periodLocation != -1)
+                {
+                    // first sentence is the string value to the left of the period location
+                    mySentence = myString.Remove(periodLocation);
+                    // the remainder of myString is the string value to the right of the location
+                    myString = myString.Substring(periodLocation + 1);
+                    // remove any leading white-space from myString
+                    myString = myString.TrimStart();
+                    // update the comma location and increment the counter
+                    periodLocation = myString.IndexOf(".");
+                    Console.WriteLine(mySentence);
+                }
+                mySentence = myString.Trim();
+                Console.WriteLine(mySentence);
+
+                Console.WriteLine("\n############################ Data Types\n");
+
+                Console.WriteLine("Signed integral types:");
+                Console.WriteLine($"sbyte  : {sbyte.MinValue} to {sbyte.MaxValue}");
+                Console.WriteLine($"short  : {short.MinValue} to {short.MaxValue}");
+                Console.WriteLine($"int    : {int.MinValue} to {int.MaxValue}");
+                Console.WriteLine($"long   : {long.MinValue} to {long.MaxValue}");
+                Console.WriteLine("");
+                Console.WriteLine("Unsigned integral types:");
+                Console.WriteLine($"byte   : {byte.MinValue} to {byte.MaxValue}");
+                Console.WriteLine($"ushort : {ushort.MinValue} to {ushort.MaxValue}");
+                Console.WriteLine($"uint   : {uint.MinValue} to {uint.MaxValue}");
+                Console.WriteLine($"ulong  : {ulong.MinValue} to {ulong.MaxValue}");
+                Console.WriteLine("");
+
+                // int to string conversion
+                int first = 5;
+                int second = 7;
+                string msg = first.ToString() + second.ToString();
+                Console.WriteLine(msg);
+
+                // string to int conversion
+                string firstOne = "5";
+                string secondOne = "7";
+                int sumRes = int.Parse(firstOne) + int.Parse(secondOne);
+                Console.WriteLine(sumRes);
+
+                // the Convert class
+                string value11 = "5";
+                string value22 = "7";
+                int result33 = Convert.ToInt32(value11) * Convert.ToInt32(value22);
+                Console.WriteLine(result33);
+                Console.WriteLine("");
+
+                // cast or convert?
+                int valueX = (int)1.5m; // casting truncates
+                Console.WriteLine(valueX);
+                int valueY = Convert.ToInt32(1.5m); // converting rounds up
+                Console.WriteLine(valueY);
+                Console.WriteLine("");
+
+                // TryParse
+                string value = "102";
+                int result = 0;
+                if (int.TryParse(value, out result))
+                {
+                    Console.WriteLine($"Measurement: {result}");
+                }
+                else
+                {
+                    Console.WriteLine("Unable to report the measurement.");
+                }
+                Console.WriteLine($"Measurement (w/ offset): {50 + result}");
+                Console.WriteLine("");
+            }
         }
     }
 }
