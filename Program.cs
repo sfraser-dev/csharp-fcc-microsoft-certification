@@ -5,11 +5,120 @@
 // wl-> Console.WriteLine(); (my own snippet)
 
 using System.Linq.Expressions;
+using System.Reflection;
+using System.Reflection.Metadata;
 
 namespace Program
 {
     class Prog
     {
+        // tuple return type (tuple can contain different types)
+        static (decimal, string) getStudentGrade(int[] studentScores)
+        {
+            int examAssignments = 5;
+            int sumAssignmentScores = 0;
+            int gradedAssignments = 0;
+            foreach (int score in studentScores)
+            {
+                gradedAssignments += 1;
+                if (gradedAssignments <= examAssignments)
+                    // add the exam score to the sum
+                    sumAssignmentScores += score;
+                else
+                    // add the extra credit points to the sum - bonus points equal to 10% of an exam score
+                    sumAssignmentScores += score / 10;
+            }
+            // initialize/reset the calculated average of exam + extra credit scores
+            decimal currentStudentGrade = (decimal)sumAssignmentScores / examAssignments;
+
+            string currentStudentLetterGrade;
+            if (currentStudentGrade >= 97)
+                currentStudentLetterGrade = "A+";
+
+            else if (currentStudentGrade >= 93)
+                currentStudentLetterGrade = "A";
+
+            else if (currentStudentGrade >= 90)
+                currentStudentLetterGrade = "A-";
+
+            else if (currentStudentGrade >= 87)
+                currentStudentLetterGrade = "B+";
+
+            else if (currentStudentGrade >= 83)
+                currentStudentLetterGrade = "B";
+
+            else if (currentStudentGrade >= 80)
+                currentStudentLetterGrade = "B-";
+
+            else if (currentStudentGrade >= 77)
+                currentStudentLetterGrade = "C+";
+
+            else if (currentStudentGrade >= 73)
+                currentStudentLetterGrade = "C";
+
+            else if (currentStudentGrade >= 70)
+                currentStudentLetterGrade = "C-";
+
+            else if (currentStudentGrade >= 67)
+                currentStudentLetterGrade = "D+";
+
+            else if (currentStudentGrade >= 63)
+                currentStudentLetterGrade = "D";
+
+            else if (currentStudentGrade >= 60)
+                currentStudentLetterGrade = "D-";
+
+            else
+                currentStudentLetterGrade = "F";
+
+            return (currentStudentGrade, currentStudentLetterGrade);
+        }
+
+        static void printArray(int[] arr)
+        {
+            foreach (int e in arr)
+            {
+                Console.Write(e + " ");
+            }
+            Console.WriteLine();
+        }
+
+        // append an array by converting it to a list and concatenting a new list onto it.
+        //
+        // arrays are passed by reference to functions. the reference is COPIED (ie:
+        // "refFuncLocal" stores the same "address" as "refArgIn") - "refFuncLocal" and
+        // "refArgIn" reference the SAME object and we can change this object in and out
+        // of the function. but if we CHANGE what "refFuncLocal" is referencing, then 
+        // the change won't be seen outwith the function by "refArgIn" 
+        static int[] myAppendArr(int[] arrIn, int[] newVals, string name)
+        {
+            var list = arrIn.ToList();
+            List<int> tempAdd = [.. newVals]; // spread operator 
+            Console.Write($"{name}'s original scores:\t");
+            list.ForEach(e => Console.Write(e + " "));  // lambda
+            Console.WriteLine();
+            list.AddRange(tempAdd);
+            // arrIn is "refFuncLocal" and it's getting reassigned here. "refFuncLocal"
+            // and "refArgIn" are now referencing different arrays. the appending of 
+            // "refFuncLocal" will not be seen outwith this function by "refArgIn"!
+            //arrIn = list.ToArray(); 
+            var arrOut = list.ToArray();
+            Console.Write($"{name}'s extra credit scores:\t");
+            printArray(arrOut);
+            Console.WriteLine();
+            return arrOut;
+        }
+
+        static decimal getStudentScore(int[] arr, int len, int curAss)
+        {
+            int sum = 0;
+            foreach (int e in arr)
+            {
+                sum += e;
+            }
+            return (decimal)sum / curAss;
+        }
+
         static string calcGrade(decimal val)
         {
             if (val >= 97.0m)
@@ -340,21 +449,14 @@ namespace Program
             int logan3 = 87;
             int logan4 = 88;
             int logan5 = 96;
-
-            sophiaSum = 0;
-            int andrewSum = 0;
-            int emmaSum = 0;
-            int loganSum = 0;
-
             decimal andrewScore;
             decimal emmaScore;
             decimal loganScore;
 
             sophiaSum = sophia1 + sophia2 + sophia3 + sophia4 + sophia5;
-            andrewSum = andrew1 + andrew2 + andrew3 + andrew4 + andrew5;
-            emmaSum = emma1 + emma2 + emma3 + emma4 + emma5;
-            loganSum = logan1 + logan2 + logan3 + logan4 + logan5;
-
+            int andrewSum = andrew1 + andrew2 + andrew3 + andrew4 + andrew5;
+            int emmaSum = emma1 + emma2 + emma3 + emma4 + emma5;
+            int loganSum = logan1 + logan2 + logan3 + logan4 + logan5;
             sophiaScore = (decimal)sophiaSum / currentAssignments;
             andrewScore = (decimal)andrewSum / currentAssignments;
             emmaScore = (decimal)emmaSum / currentAssignments;
@@ -390,7 +492,7 @@ namespace Program
             Console.WriteLine("Press the Enter key to continue");
             Console.ReadLine();
 
-            Console.WriteLine("\n############################ Extra Credits\n");
+            Console.WriteLine("\n############################ Student Extra Credits\n");
 
             // existing students, appending extra credits
             sophiaScoresArr = myAppendArr(sophiaScoresArr, [94, 90], "sophia");
@@ -426,116 +528,150 @@ namespace Program
 
             Console.WriteLine("\n\rPress the Enter key to continue");
             Console.ReadLine();
-        }
 
-        // tuple return type (tuple can contain different types)
-        static (decimal, string) getStudentGrade(int[] studentScores)
-        {
-            int examAssignments = 5;
-            int sumAssignmentScores = 0;
-            int gradedAssignments = 0;
-            string currentStudentLetterGrade = "Z";
+            Console.WriteLine("\n############################ Boolean Expressions\n");
 
-            foreach (int score in studentScores)
+            // ternary operator with boolean expression
+            Random coin = new Random();
+            int flip = coin.Next(0, 2);
+            Console.WriteLine((flip == 0) ? "heads" : "tails");
+
+            // boolean expressions
+            string permission = "Admin|Manager";
+            int level = 53;
+            if (permission.Contains("Admin"))
             {
-                gradedAssignments += 1;
-                if (gradedAssignments <= examAssignments)
-                    // add the exam score to the sum
-                    sumAssignmentScores += score;
+                if (level > 55)
+                {
+                    Console.WriteLine("Welcome, Super Admin user.");
+                }
                 else
-                    // add the extra credit points to the sum - bonus points equal to 10% of an exam score
-                    sumAssignmentScores += score / 10;
+                {
+                    Console.WriteLine("Welcome, Admin user.");
+                }
             }
-            // initialize/reset the calculated average of exam + extra credit scores
-            decimal currentStudentGrade = (decimal)sumAssignmentScores / examAssignments;
-
-            if (currentStudentGrade >= 97)
-                currentStudentLetterGrade = "A+";
-
-            else if (currentStudentGrade >= 93)
-                currentStudentLetterGrade = "A";
-
-            else if (currentStudentGrade >= 90)
-                currentStudentLetterGrade = "A-";
-
-            else if (currentStudentGrade >= 87)
-                currentStudentLetterGrade = "B+";
-
-            else if (currentStudentGrade >= 83)
-                currentStudentLetterGrade = "B";
-
-            else if (currentStudentGrade >= 80)
-                currentStudentLetterGrade = "B-";
-
-            else if (currentStudentGrade >= 77)
-                currentStudentLetterGrade = "C+";
-
-            else if (currentStudentGrade >= 73)
-                currentStudentLetterGrade = "C";
-
-            else if (currentStudentGrade >= 70)
-                currentStudentLetterGrade = "C-";
-
-            else if (currentStudentGrade >= 67)
-                currentStudentLetterGrade = "D+";
-
-            else if (currentStudentGrade >= 63)
-                currentStudentLetterGrade = "D";
-
-            else if (currentStudentGrade >= 60)
-                currentStudentLetterGrade = "D-";
-
+            else if (permission.Contains("Manager"))
+            {
+                if (level >= 20)
+                {
+                    Console.WriteLine("Contact an Admin for access.");
+                }
+                else
+                {
+                    Console.WriteLine("You do not have sufficient privileges.");
+                }
+            }
             else
-                currentStudentLetterGrade = "F";
-
-            return (currentStudentGrade, currentStudentLetterGrade);
-
-        }
-
-        static void printArray(int[] arr)
-        {
-            foreach (int e in arr)
             {
-                Console.Write(e + " ");
+                Console.WriteLine("You do not have sufficient privileges.");
             }
-            Console.WriteLine();
-        }
 
-        // append an array by converting it to a list and concatenting a new list onto it.
-        //
-        // arrays are passed by reference to functions. the reference is COPIED (ie:
-        // "refFuncLocal" stores the same "address" as "refArgIn") - "refFuncLocal" and
-        // "refArgIn" reference the SAME object and we can change this object in and out
-        // of the function. but if we CHANGE what "refFuncLocal" is referencing, then 
-        // the change won't be seen outwith the function by "refArgIn" 
-        static int[] myAppendArr(int[] arrIn, int[] newVals, string name)
-        {
-            var list = arrIn.ToList();
-            List<int> tempAdd = [.. newVals]; // spread operator 
-            Console.Write($"{name}'s original scores:\t");
-            list.ForEach(e => Console.Write(e + " "));  // lambda
-            Console.WriteLine();
-            list.AddRange(tempAdd);
-            // arrIn is "refFuncLocal" and it's getting reassigned here. "refFuncLocal"
-            // and "refArgIn" are now referencing different arrays. the appending of 
-            // "refFuncLocal" will not be seen outwith this function by "refArgIn"!
-            //arrIn = list.ToArray(); 
-            var arrOut = list.ToArray();
-            Console.Write($"{name}'s extra credit scores:\t");
-            printArray(arrOut);
-            Console.WriteLine();
-            return arrOut;
-        }
-
-        static decimal getStudentScore(int[] arr, int len, int curAss)
-        {
-            int sum = 0;
-            foreach (int e in arr)
+            // looking for a number
+            int[] numbers = { 4, 8, 15, 16, 23, 42 };
+            int tot = 0;
+            bool found = false;
+            foreach (int number in numbers)
             {
-                sum += e;
+                tot += number;
+                if (number == 42)
+                    found = true;
             }
-            return (decimal)sum / curAss;
-        }
+            if (found)
+                Console.WriteLine("Set contains 42");
 
+            Console.WriteLine($"Total: {tot}");
+
+            Console.WriteLine("\n############################ Switch Statement\n");
+
+            int employeeLevel = 100;
+            string employeeName = "John Smith";
+            string title;
+            switch (employeeLevel)
+            {
+                case 100:
+                case 200:
+                    title = "Senior Associate";
+                    break;
+                case 300:
+                    title = "Manager";
+                    break;
+                case 400:
+                    title = "Senior Manager";
+                    break;
+                default:
+                    title = "Associate";
+                    break;
+            }
+            Console.WriteLine($"{employeeName}, {title}");
+
+            // stock codes parse via switch
+            string stockKeepingUnit = "01-MN-L";
+            string[] product = stockKeepingUnit.Split('-');
+            string type;
+            switch (product[0])
+            {
+                case "01":
+                    type = "Sweat shirt";
+                    break;
+                case "02":
+                    type = "T-Shirt";
+                    break;
+                case "03":
+                    type = "Sweat pants";
+                    break;
+                default:
+                    type = "Other";
+                    break;
+            }
+
+            string color;
+            switch (product[1])
+            {
+                case "BL":
+                    color = "Black";
+                    break;
+                case "MN":
+                    color = "Maroon";
+                    break;
+                default:
+                    color = "White";
+                    break;
+            }
+
+            string size;
+            switch (product[2])
+            {
+                case "S":
+                    size = "Small";
+                    break;
+                case "M":
+                    size = "Medium";
+                    break;
+                case "L":
+                    size = "Large";
+                    break;
+                default:
+                    size = "One Size Fits All";
+                    break;
+            }
+
+            Console.WriteLine($"Product: {size} {color} {type}");
+
+            Console.WriteLine("\n############################ For Loops\n");
+
+            // fizzbuzz
+            for (int i = 1; i < 101; i++)
+            {
+                // index printed with "space" padding width 3
+                if ((i % 3 == 0) && (i % 5 == 0))
+                    Console.WriteLine($"{i,3} - FizzBuzz");
+                else if (i % 3 == 0)
+                    Console.WriteLine($"{i,3} - Fizz");
+                else if (i % 5 == 0)
+                    Console.WriteLine($"{i,3} - Buzz");
+                else
+                    Console.WriteLine($"{i,3}");
+            }
+        }
     }
 }
