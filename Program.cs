@@ -149,7 +149,8 @@ namespace Program
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("\n############################ Calc Grades of Students\n");
+            Console.WriteLine("");
+            Console.WriteLine("############################ Calc Grades of Students\n");
 
             // initialize variables - graded assignments 
             int curAssignments = 5;
@@ -201,7 +202,11 @@ namespace Program
             Console.WriteLine("Zahirah:\t " + zahirahScore + "\t" + calcGrade(zahirahScore));
             Console.WriteLine("Jeong:\t\t " + jeongScore + "\t" + calcGrade(jeongScore));
 
-            Console.WriteLine("\n############################ Calc Sophia's GPA\n");
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Calc Sophia's GPA\n");
 
             string studentName = "Sophia Johnson";
             string course1Name = "English 101";
@@ -255,7 +260,11 @@ namespace Program
 
             Console.WriteLine($"\nFinal GPA:\t\t\t{leadingDigit}.{firstDigit}{secondDigit}");
 
-            Console.WriteLine("\n############################ If/else challenge\n");
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ If/Else Challenge\n");
 
             Random random = new Random();
             int daysUntilExpiration = random.Next(12);
@@ -282,12 +291,20 @@ namespace Program
                 Console.WriteLine($"Renew now and save {discountPercentage}%.");
             }
 
-            Console.WriteLine("\n############################ Decimal Type\n");
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Decimal Type\n");
 
             decimal x = 7 / 5;
             Console.WriteLine($"x={x}");
 
-            Console.WriteLine("\n############################ Dice Game with Random and Next\n");
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Dice Game with Random and Next\n");
 
             // random values
             Random dice1 = new Random();
@@ -344,14 +361,23 @@ namespace Program
                 Console.WriteLine("Sorry, you lose.");
             }
 
-            Console.WriteLine("\n############################ Math Max\n");
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Math Max\n");
 
             int firstValue = 500;
             int secondValue = 600;
             int largerValue = Math.Max(firstValue, secondValue);
-            Console.WriteLine(largerValue);
+            Console.WriteLine($"The two numbers are {firstValue} and {secondValue}");
+            Console.WriteLine($"The largest is: {largerValue}");
 
-            Console.WriteLine("\n############################ Arrays\n");
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Arrays\n");
 
             string[] fraudulentOrderIDs = ["A123", "B456", "C789"];
             Console.WriteLine($"First: {fraudulentOrderIDs[0]}");
@@ -375,15 +401,19 @@ namespace Program
             int[] inventory = [200, 450, 700, 175, 250];
             int sum = 0;
             int bin = 0;
-            foreach (int items in inventory)
+            foreach (int itms in inventory)
             {
-                sum += items;
+                sum += itms;
                 bin++;
-                Console.WriteLine($"Bin {bin} = {items} items (Running total: {sum})");
+                Console.WriteLine($"Bin {bin} = {itms} items (Running total: {sum})");
             }
             Console.WriteLine($"We have {sum} items in inventory.");
 
-            Console.WriteLine("\n############################ Nested Iteration\n");
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Nested Iteration\n");
             string[] fraudulentOrderID3 = ["B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179"];
             foreach (string s in fraudulentOrderID3)
             {
@@ -393,7 +423,11 @@ namespace Program
                 }
             }
 
-            Console.WriteLine("\n############################ Code Readability\n");
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Code Readability\n");
 
             /*
                 This code reverses a message, counts the number of times 
@@ -422,7 +456,11 @@ namespace Program
             Console.WriteLine(newMessage);
             Console.WriteLine($"'o' appears {letterCount} times.");
 
-            Console.WriteLine("\n############################ Calc Student Scores Simply\n");
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Calc Student Scores Simply\n");
 
             // initialize variables - graded assignments 
             int currentAssignments = 5;
@@ -469,10 +507,11 @@ namespace Program
             Console.WriteLine("Emma:\t\t" + emmaScore + "\tB");
             Console.WriteLine("Logan:\t\t" + loganScore + "\tA-");
 
+            Console.WriteLine("");
             Console.WriteLine("Press the Enter key to continue");
             Console.ReadLine();
 
-            Console.WriteLine("\n############################ Calc Student Scores Using Arrays, Foreach & Function\n");
+            Console.WriteLine("############################ Calc Student Scores Using Arrays, Foreach & Function\n");
 
             int[] sophiaScoresArr = [90, 86, 87, 98, 100];
             int[] andrewScoresArr = [92, 89, 81, 96, 90];
@@ -490,10 +529,11 @@ namespace Program
             Console.WriteLine("Emma:\t\t" + emmaScore + "\t?");
             Console.WriteLine("Logan:\t\t" + loganScore + "\t?");
 
+            Console.WriteLine("");
             Console.WriteLine("Press the Enter key to continue");
             Console.ReadLine();
 
-            Console.WriteLine("\n############################ Student Extra Credits\n");
+            Console.WriteLine("############################ Student Extra Credits\n");
 
             // existing students, appending extra credits
             sophiaScoresArr = myAppendArr(sophiaScoresArr, [94, 90], "sophia");
@@ -527,10 +567,10 @@ namespace Program
             (decimal gregorGrade, string gregorLetterGrade) = getStudentGrade(gregorScoresArr);
             Console.WriteLine($"gregor\t\t{gregorGrade}\t{gregorLetterGrade}");
 
-            Console.WriteLine("\n\rPress the Enter key to continue");
+            Console.WriteLine("\nPress the Enter key to continue");
             Console.ReadLine();
 
-            Console.WriteLine("\n############################ Boolean Expressions\n");
+            Console.WriteLine("############################ Boolean Expressions\n");
 
             // ternary operator with boolean expression
             Random coin = new Random();
@@ -582,7 +622,10 @@ namespace Program
 
             Console.WriteLine($"Total: {tot}");
 
-            Console.WriteLine("\n############################ Switch Statement\n");
+            Console.WriteLine("\nPress the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Switch Statement\n");
 
             int employeeLevel = 100;
             string employeeName = "John Smith";
@@ -658,7 +701,10 @@ namespace Program
 
             Console.WriteLine($"Product: {size} {color} {type}");
 
-            Console.WriteLine("\n############################ For Loops\n");
+            Console.WriteLine("\nPress the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ For Loops\n");
 
             // fizzbuzz
             for (int i = 1; i < 101; ++i)
@@ -674,7 +720,10 @@ namespace Program
                     Console.WriteLine($"{i,3}");
             }
 
-            Console.WriteLine("\n############################ Do While Statement\n");
+            Console.WriteLine("\nPress the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Do While Statement\n");
 
             int hero = 10;
             int monster = 10;
@@ -695,27 +744,36 @@ namespace Program
 
             Console.WriteLine(hero > monster ? "Hero wins!" : "Monster wins!");
 
+            Console.WriteLine("\nPress the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Project 1\n");
+
             // project 1
-            string? readResult;
-            string valueEntered = "";
+            string valueEnteredStr;
             Console.WriteLine("Enter an integer value between 5 and 10");
             int numValue;
-            bool validNumber;
+            bool isValidNumber;
             do
             {
-                readResult = Console.ReadLine();
-                if (readResult != null)
-                {
-                    valueEntered = readResult;
-                }
+                // simplify for testing
+                //
+                // string? readResultStr = Console.ReadLine(); //return value can possibly be null
+                // if (readResultStr != null)
+                // {
+                //     valueEnteredStr = readResultStr;
+                // }
+                Console.WriteLine("(hit enter to select the number 8)");
+                Console.ReadLine();
+                valueEnteredStr = "8";
 
-                validNumber = int.TryParse(valueEntered, out numValue);
+                isValidNumber = int.TryParse(valueEnteredStr, out numValue);
 
-                if (validNumber == true)
+                if (isValidNumber)
                 {
                     if (numValue <= 5 || numValue >= 10)
                     {
-                        validNumber = false;
+                        isValidNumber = false;
                         Console.WriteLine($"You entered {numValue}. Please enter a number between 5 and 10.");
                     }
                 }
@@ -723,25 +781,33 @@ namespace Program
                 {
                     Console.WriteLine("Sorry, you entered an invalid number, please try again");
                 }
-            } while (validNumber == false);
+            } while (isValidNumber == false);
 
             Console.WriteLine($"Your input value ({numValue}) has been accepted.");
 
+            Console.WriteLine("");
             Console.WriteLine("Press the Enter key to continue");
             Console.ReadLine();
 
+            Console.WriteLine("############################ Project 2\n");
+
             // project 2
-            string? readResult2; // string readResult2 is a nullable type (string?)
+            string? readResult2; // is a nullable type (string?)
             string roleName = "";
             bool validEntry = false;
             do
             {
                 Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
-                readResult2 = Console.ReadLine();
+                // readResult2 = Console.ReadLine();
+                // simplify for testing
+                Console.WriteLine("(hit enter to select 'user')");
+                Console.ReadLine();
+                readResult2 = "user";
                 if (readResult2 != null)
                 {
                     roleName = readResult2.Trim();
                 }
+                // simplify for testing
 
                 if (roleName.ToLower() == "administrator" || roleName.ToLower() == "manager" || roleName.ToLower() == "user")
                 {
@@ -754,11 +820,15 @@ namespace Program
 
             } while (validEntry == false);
             Console.WriteLine($"Your input value ({roleName}) has been accepted.");
+
+            Console.WriteLine("");
             Console.WriteLine("Press the Enter key to continue");
             Console.ReadLine();
 
+            Console.WriteLine("############################ Project 3\n");
+
             // project 3
-            string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+            string[] myStrings = ["I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices"];
             int stringsCount = myStrings.Length;
             for (int i = 0; i < stringsCount; ++i)
             {
@@ -780,244 +850,273 @@ namespace Program
                 }
                 mySentence = myString.Trim();
                 Console.WriteLine(mySentence);
+            }
 
-                Console.WriteLine("\n############################ Data Types\n");
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
 
-                Console.WriteLine("Signed integral types:");
-                Console.WriteLine($"sbyte  : {sbyte.MinValue} to {sbyte.MaxValue}");
-                Console.WriteLine($"short  : {short.MinValue} to {short.MaxValue}");
-                Console.WriteLine($"int    : {int.MinValue} to {int.MaxValue}");
-                Console.WriteLine($"long   : {long.MinValue} to {long.MaxValue}");
-                Console.WriteLine("");
-                Console.WriteLine("Unsigned integral types:");
-                Console.WriteLine($"byte   : {byte.MinValue} to {byte.MaxValue}");
-                Console.WriteLine($"ushort : {ushort.MinValue} to {ushort.MaxValue}");
-                Console.WriteLine($"uint   : {uint.MinValue} to {uint.MaxValue}");
-                Console.WriteLine($"ulong  : {ulong.MinValue} to {ulong.MaxValue}");
-                Console.WriteLine("");
+            Console.WriteLine("############################ Data Types\n");
 
-                // int to string conversion
-                int first = 5;
-                int second = 7;
-                string msg = first.ToString() + second.ToString();
-                Console.WriteLine(msg);
+            Console.WriteLine("Signed integral types:");
+            Console.WriteLine($"sbyte  : {sbyte.MinValue} to {sbyte.MaxValue}");
+            Console.WriteLine($"short  : {short.MinValue} to {short.MaxValue}");
+            Console.WriteLine($"int    : {int.MinValue} to {int.MaxValue}");
+            Console.WriteLine($"long   : {long.MinValue} to {long.MaxValue}");
+            Console.WriteLine("");
+            Console.WriteLine("Unsigned integral types:");
+            Console.WriteLine($"byte   : {byte.MinValue} to {byte.MaxValue}");
+            Console.WriteLine($"ushort : {ushort.MinValue} to {ushort.MaxValue}");
+            Console.WriteLine($"uint   : {uint.MinValue} to {uint.MaxValue}");
+            Console.WriteLine($"ulong  : {ulong.MinValue} to {ulong.MaxValue}");
+            Console.WriteLine("");
 
-                // string to int conversion
-                string firstOne = "5";
-                string secondOne = "7";
-                int sumRes = int.Parse(firstOne) + int.Parse(secondOne);
-                Console.WriteLine(sumRes);
+            // int to string conversion
+            int first = 5;
+            int second = 7;
+            string msg = first.ToString() + second.ToString();
+            Console.WriteLine(msg);
 
-                // the Convert class
-                string value11 = "5";
-                string value22 = "7";
-                int result33 = Convert.ToInt32(value11) * Convert.ToInt32(value22);
-                Console.WriteLine(result33);
-                Console.WriteLine("");
+            // string to int conversion
+            string firstOne = "5";
+            string secondOne = "7";
+            int sumRes = int.Parse(firstOne) + int.Parse(secondOne);
+            Console.WriteLine(sumRes);
 
-                // cast or convert?
-                int valueX = (int)1.5m; // casting truncates
-                Console.WriteLine(valueX);
-                int valueY = Convert.ToInt32(1.5m); // converting rounds up
-                Console.WriteLine(valueY);
-                Console.WriteLine("");
+            // the Convert class
+            string value11 = "5";
+            string value22 = "7";
+            int result33 = Convert.ToInt32(value11) * Convert.ToInt32(value22);
+            Console.WriteLine(result33);
+            Console.WriteLine("");
 
-                // TryParse, try parsing a string to a variable (usually use out keyword too)
-                string value = "102";
-                int result = 0;
-                if (int.TryParse(value, out result))
+            // cast or convert?
+            int valueX = (int)1.5m; // casting truncates
+            Console.WriteLine(valueX);
+            int valueY = Convert.ToInt32(1.5m); // converting rounds up
+            Console.WriteLine(valueY);
+            Console.WriteLine("");
+
+            // TryParse, try parsing a string to a variable (usually use out keyword too)
+            string value = "102";
+            int result = 0;
+            if (int.TryParse(value, out result))
+            {
+                Console.WriteLine($"Measurement: {result}");
+            }
+            else
+            {
+                Console.WriteLine("Unable to report the measurement.");
+            }
+            Console.WriteLine($"Measurement (w/ offset): {50 + result}");
+            Console.WriteLine("");
+
+            // combining string array values as strings and as integers
+            Console.WriteLine("grabbing possible numbers in an array of strings:");
+            string[] valuesAA = { "12.3", "45", "ABC", "11", "DEF" };
+            decimal totalAA = 0m;
+            string messageAA = "";
+            foreach (var valueAA in valuesAA)
+            {
+                decimal numberAA; // stores the TryParse "out" value
+                                  // attempt to convert element to a number
+                if (decimal.TryParse(valueAA, out numberAA))
                 {
-                    Console.WriteLine($"Measurement: {result}");
+                    totalAA += numberAA;
+                }
+                // treat as string
+                else
+                {
+                    messageAA += valueAA;
+                }
+            }
+            Console.WriteLine($"Message: {messageAA}");
+            Console.WriteLine($"Total: {totalAA}");
+            Console.WriteLine("");
+
+            // output math operations as specific number types
+            Console.WriteLine("Output math operations as specific number types:");
+            int value1 = 12;
+            decimal value2 = 6.2m;
+            float value3 = 4.3f;
+            // The Convert class is best for converting the fractional decimal numbers into whole integer numbers
+            // Convert.ToInt32() rounds up the way you would expect.
+            int result1 = Convert.ToInt32((decimal)value1 / value2);
+            Console.WriteLine($"Divide value1 by value2, display the result as an int: {result1}");
+            decimal result2 = value2 / (decimal)value3;
+            Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {result2}");
+            float result3 = value3 / value1;
+            Console.WriteLine($"Divide value3 by value1, display the result as a float: {result3}");
+
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Array Methods Sort and Reverse\n");
+
+            string[] pallets = { "B14", "A11", "B12", "A13" };
+            Console.WriteLine("Original...");
+            foreach (var pallet in pallets)
+            {
+                Console.WriteLine($"-- {pallet}");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Sorted...");
+            Array.Sort(pallets);
+            foreach (var pallet in pallets)
+            {
+                Console.WriteLine($"-- {pallet}");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Reversed...");
+            Array.Reverse(pallets);
+            foreach (var pallet in pallets)
+            {
+                Console.WriteLine($"-- {pallet}");
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Array Methods Clear and Resize\n");
+
+            string[] pallets2 = { "B14", "A11", "B12", "A13" };
+            Console.WriteLine($"Before: {pallets2[0]}");
+            Array.Clear(pallets2, 0, 2);
+            Console.WriteLine($"After: {pallets2[0]}");
+            Console.WriteLine($"Clearing 2 ... count: {pallets2.Length}");
+            foreach (var pallet in pallets2)
+            {
+                Console.WriteLine($"-- {pallet}");
+            }
+            Console.WriteLine("");
+
+            // resize the array to remove elements
+            string[] pallets3 = { "B14", "A11", "B12", "A13" };
+            Array.Clear(pallets3, 0, 2);
+            Console.WriteLine($"Clearing 2 ... count: {pallets3.Length}");
+            foreach (var pallet in pallets3)
+            {
+                Console.WriteLine($"-- {pallet}");
+            }
+            Console.WriteLine("");
+            Array.Resize(ref pallets3, 6);
+            Console.WriteLine($"Resizing 6 ... count: {pallets3.Length}");
+            pallets3[4] = "C01";
+            pallets3[5] = "C02";
+            foreach (var pallet in pallets3)
+            {
+                Console.WriteLine($"-- {pallet}");
+            }
+            Console.WriteLine("");
+            Array.Resize(ref pallets3, 3);
+            Console.WriteLine($"Resizing 3 ... count: {pallets3.Length}");
+            foreach (var pallet in pallets3)
+            {
+                Console.WriteLine($"-- {pallet}");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Search for nulls in the array now of size 3");
+            for (int j = 0; j < pallets3.Length; ++j)
+            {
+                if (pallets3[j] == null)
+                {
+                    Console.WriteLine("-- null");
                 }
                 else
                 {
-                    Console.WriteLine("Unable to report the measurement.");
+                    Console.WriteLine($"-- {pallets3[j]}");
                 }
-                Console.WriteLine($"Measurement (w/ offset): {50 + result}");
-                Console.WriteLine("");
-
-                // combining string array values as strings and as integers
-                Console.WriteLine("grabbing possible numbers in an array of strings:");
-                string[] valuesAA = { "12.3", "45", "ABC", "11", "DEF" };
-                decimal totalAA = 0m;
-                string messageAA = "";
-                foreach (var valueAA in valuesAA)
-                {
-                    decimal numberAA; // stores the TryParse "out" value
-                    // attempt to convert element to a number
-                    if (decimal.TryParse(valueAA, out numberAA))
-                    {
-                        totalAA += numberAA;
-                    }
-                    // treat as string
-                    else
-                    {
-                        messageAA += valueAA;
-                    }
-                }
-                Console.WriteLine($"Message: {messageAA}");
-                Console.WriteLine($"Total: {totalAA}");
-                Console.WriteLine("");
-
-                // output math operations as specific number types
-                Console.WriteLine("Output math operations as specific number types:");
-                int value1 = 12;
-                decimal value2 = 6.2m;
-                float value3 = 4.3f;
-                // The Convert class is best for converting the fractional decimal numbers into whole integer numbers
-                // Convert.ToInt32() rounds up the way you would expect.
-                int result1 = Convert.ToInt32((decimal)value1 / value2);
-                Console.WriteLine($"Divide value1 by value2, display the result as an int: {result1}");
-                decimal result2 = value2 / (decimal)value3;
-                Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {result2}");
-                float result3 = value3 / value1;
-                Console.WriteLine($"Divide value3 by value1, display the result as a float: {result3}");
-                Console.WriteLine("");
-
-                Console.WriteLine("\n############################ Array Methods Sort and Reverse\n");
-
-                string[] pallets = { "B14", "A11", "B12", "A13" };
-                Console.WriteLine("Original...");
-                foreach (var pallet in pallets)
-                {
-                    Console.WriteLine($"-- {pallet}");
-                }
-                Console.WriteLine("");
-                Console.WriteLine("Sorted...");
-                Array.Sort(pallets);
-                foreach (var pallet in pallets)
-                {
-                    Console.WriteLine($"-- {pallet}");
-                }
-                Console.WriteLine("");
-                Console.WriteLine("Reversed...");
-                Array.Reverse(pallets);
-                foreach (var pallet in pallets)
-                {
-                    Console.WriteLine($"-- {pallet}");
-                }
-                Console.WriteLine("");
-
-                Console.WriteLine("\n############################ Array Methods Clear and Resize\n");
-
-                string[] pallets2 = { "B14", "A11", "B12", "A13" };
-                Console.WriteLine("");
-                Console.WriteLine($"Before: {pallets2[0]}");
-                Array.Clear(pallets2, 0, 2);
-                Console.WriteLine($"After: {pallets2[0]}");
-                Console.WriteLine($"Clearing 2 ... count: {pallets2.Length}");
-                foreach (var pallet in pallets2)
-                {
-                    Console.WriteLine($"-- {pallet}");
-                }
-                Console.WriteLine("");
-
-                // resize the array to remove elements
-                string[] pallets3 = { "B14", "A11", "B12", "A13" };
-                Console.WriteLine("");
-                Array.Clear(pallets3, 0, 2);
-                Console.WriteLine($"Clearing 2 ... count: {pallets3.Length}");
-                foreach (var pallet in pallets3)
-                {
-                    Console.WriteLine($"-- {pallet}");
-                }
-                Console.WriteLine("");
-                Array.Resize(ref pallets3, 6);
-                Console.WriteLine($"Resizing 6 ... count: {pallets3.Length}");
-                pallets3[4] = "C01";
-                pallets3[5] = "C02";
-                foreach (var pallet in pallets3)
-                {
-                    Console.WriteLine($"-- {pallet}");
-                }
-                Console.WriteLine("");
-                Array.Resize(ref pallets3, 3);
-                Console.WriteLine($"Resizing 3 ... count: {pallets3.Length}");
-                foreach (var pallet in pallets3)
-                {
-                    Console.WriteLine($"-- {pallet}");
-                }
-                Console.WriteLine("");
-                Console.WriteLine("Search for nulls in the array now of size 3");
-                for (int j = 0; j < pallets3.Length; ++j)
-                {
-                    if (pallets3[j] == null)
-                    {
-                        Console.WriteLine("-- null");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"-- {pallets3[j]}");
-                    }
-                }
-                Console.WriteLine("");
-
-                Console.WriteLine("\n############################ Array Methods Split and Join\n");
-
-                Console.WriteLine("String to char array, reverse, then back to string");
-                string val = "abc123";
-                char[] valueArray = val.ToCharArray();
-                Array.Reverse(valueArray);
-                // string res = new string(valueArray);
-                string res = String.Join(",", valueArray);
-                Console.WriteLine(res);
-                Console.WriteLine("");
-
-                Console.WriteLine("Split comma-separated-value string into an array of strings");
-                string dumpyStr = "abc123";
-                Console.WriteLine(dumpyStr);
-                // to char array
-                char[] dumpyCharArr = dumpyStr.ToCharArray();
-                Array.Reverse(dumpyCharArr);
-                // create csv string from char array
-                string dumpyStr2 = String.Join(",", dumpyCharArr);
-                Console.WriteLine(dumpyStr2);
-                // create array of strings by splitting at the commas
-                string[] items = dumpyStr2.Split(',');
-                foreach (string item in items)
-                {
-                    Console.Write(item + " ");
-                }
-                Console.WriteLine("");
-
-                Console.WriteLine("\n############################ Array Methods Reverse the Words in a Sentence\n");
-                string pangram = "The quick brown fox jumps over the lazy dog";
-                Console.WriteLine(pangram);
-                // Step 1
-                string[] messageR = pangram.Split(' ');
-                //Step 2
-                string[] newMessageR = new string[messageR.Length];
-                // Step 3
-                for (int k = 0; k < messageR.Length; ++k)
-                {
-                    char[] lettersR = messageR[k].ToCharArray();
-                    Array.Reverse(lettersR);
-                    newMessageR[k] = new string(lettersR);
-                }
-                //Step 4
-                string resultR = String.Join(" ", newMessageR);
-                Console.WriteLine(resultR);
-
-                Console.WriteLine("\n############################ Array Methods Parse Orders, Sort Orders and Tag Errors\n");
-
-                // error if order doesn't have four characters
-                string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
-                Console.WriteLine(orderStream);
-                string[] itemsOrder = orderStream.Split(',');
-                Array.Sort(itemsOrder);
-                foreach (var item in itemsOrder)
-                {
-                    if (item.Length == 4)
-                    {
-                        Console.WriteLine(item);
-                    }
-                    else
-                    {
-                        Console.WriteLine(item + "\t- Error");
-                    }
-                }
-                Console.WriteLine("");
             }
+
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Array Methods Split and Join\n");
+
+            Console.WriteLine("String to char array, reverse, then back to string");
+            string val = "abc123";
+            char[] valueArray = val.ToCharArray();
+            Array.Reverse(valueArray);
+            // string res = new string(valueArray);
+            string res = String.Join(",", valueArray);
+            Console.WriteLine(res);
+            Console.WriteLine("");
+
+            Console.WriteLine("Split comma-separated-value string into an array of strings");
+            string dumpyStr = "abc123";
+            Console.WriteLine(dumpyStr);
+            // to char array
+            char[] dumpyCharArr = dumpyStr.ToCharArray();
+            Array.Reverse(dumpyCharArr);
+            // create csv string from char array
+            string dumpyStr2 = String.Join(",", dumpyCharArr);
+            Console.WriteLine(dumpyStr2);
+            // create array of strings by splitting at the commas
+            string[] items = dumpyStr2.Split(',');
+            foreach (string item in items)
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine("");
+
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Array Methods Reverse the Words in a Sentence\n");
+            string pangram = "The quick brown fox jumps over the lazy dog";
+            Console.WriteLine(pangram);
+            // Step 1
+            string[] messageR = pangram.Split(' ');
+            //Step 2
+            string[] newMessageR = new string[messageR.Length];
+            // Step 3
+            for (int k = 0; k < messageR.Length; ++k)
+            {
+                char[] lettersR = messageR[k].ToCharArray();
+                Array.Reverse(lettersR);
+                newMessageR[k] = new string(lettersR);
+            }
+            //Step 4
+            string resultR = String.Join(" ", newMessageR);
+            Console.WriteLine(resultR);
+
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Array Methods Parse Orders, Sort Orders and Tag Errors\n");
+
+            // error if order doesn't have four characters
+            string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+            Console.WriteLine(orderStream);
+            string[] itemsOrder = orderStream.Split(',');
+            Array.Sort(itemsOrder);
+            foreach (var item in itemsOrder)
+            {
+                if (item.Length == 4)
+                {
+                    Console.WriteLine(item);
+                }
+                else
+                {
+                    Console.WriteLine(item + "\t- Error");
+                }
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+
+            Console.WriteLine("############################ Composite Formatting\n");
+
+            string strHi = "Hello";
+            string strWld = "World";
+            string strCombo = string.Format("{0} {1}!", strHi, strWld);
+            Console.WriteLine(strCombo);
         }
     }
 }
