@@ -147,6 +147,13 @@ namespace Program
                 return "error";
             }
         }
+
+        static void pauseHitEnterToContinue() {
+            Console.WriteLine("");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("");
@@ -202,9 +209,7 @@ namespace Program
             Console.WriteLine("Zahirah:\t " + zahirahScore + "\t" + calcGrade(zahirahScore));
             Console.WriteLine("Jeong:\t\t " + jeongScore + "\t" + calcGrade(jeongScore));
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Calc Sophia's GPA\n");
 
@@ -260,9 +265,7 @@ namespace Program
 
             Console.WriteLine($"\nFinal GPA:\t\t\t{leadingDigit}.{firstDigit}{secondDigit}");
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ If/Else Challenge\n");
 
@@ -291,18 +294,14 @@ namespace Program
                 Console.WriteLine($"Renew now and save {discountPercentage}%.");
             }
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Decimal Type\n");
 
             decimal x = 7 / 5;
             Console.WriteLine($"x={x}");
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Dice Game with Random and Next\n");
 
@@ -361,9 +360,7 @@ namespace Program
                 Console.WriteLine("Sorry, you lose.");
             }
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Math Max\n");
 
@@ -373,9 +370,7 @@ namespace Program
             Console.WriteLine($"The two numbers are {firstValue} and {secondValue}");
             Console.WriteLine($"The largest is: {largerValue}");
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Arrays\n");
 
@@ -409,9 +404,7 @@ namespace Program
             }
             Console.WriteLine($"We have {sum} items in inventory.");
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Nested Iteration\n");
             string[] fraudulentOrderID3 = ["B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179"];
@@ -423,9 +416,7 @@ namespace Program
                 }
             }
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Code Readability\n");
 
@@ -456,9 +447,7 @@ namespace Program
             Console.WriteLine(newMessage);
             Console.WriteLine($"'o' appears {letterCount} times.");
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Calc Student Scores Simply\n");
 
@@ -507,11 +496,9 @@ namespace Program
             Console.WriteLine("Emma:\t\t" + emmaScore + "\tB");
             Console.WriteLine("Logan:\t\t" + loganScore + "\tA-");
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
-            Console.WriteLine("############################ Calc Student Scores Using Arrays, Foreach & Function\n");
+            Console.WriteLine("############################ Calc Student Scores Using Arrays, Foreach and Function\n");
 
             int[] sophiaScoresArr = [90, 86, 87, 98, 100];
             int[] andrewScoresArr = [92, 89, 81, 96, 90];
@@ -529,9 +516,7 @@ namespace Program
             Console.WriteLine("Emma:\t\t" + emmaScore + "\t?");
             Console.WriteLine("Logan:\t\t" + loganScore + "\t?");
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Student Extra Credits\n");
 
@@ -567,8 +552,7 @@ namespace Program
             (decimal gregorGrade, string gregorLetterGrade) = getStudentGrade(gregorScoresArr);
             Console.WriteLine($"gregor\t\t{gregorGrade}\t{gregorLetterGrade}");
 
-            Console.WriteLine("\nPress the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Boolean Expressions\n");
 
@@ -622,8 +606,7 @@ namespace Program
 
             Console.WriteLine($"Total: {tot}");
 
-            Console.WriteLine("\nPress the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Switch Statement\n");
 
@@ -701,8 +684,7 @@ namespace Program
 
             Console.WriteLine($"Product: {size} {color} {type}");
 
-            Console.WriteLine("\nPress the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ For Loops\n");
 
@@ -720,8 +702,7 @@ namespace Program
                     Console.WriteLine($"{i,3}");
             }
 
-            Console.WriteLine("\nPress the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Do While Statement\n");
 
@@ -744,8 +725,7 @@ namespace Program
 
             Console.WriteLine(hero > monster ? "Hero wins!" : "Monster wins!");
 
-            Console.WriteLine("\nPress the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Project 1\n");
 
@@ -785,9 +765,7 @@ namespace Program
 
             Console.WriteLine($"Your input value ({numValue}) has been accepted.");
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Project 2\n");
 
@@ -821,9 +799,7 @@ namespace Program
             } while (validEntry == false);
             Console.WriteLine($"Your input value ({roleName}) has been accepted.");
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Project 3\n");
 
@@ -852,9 +828,7 @@ namespace Program
                 Console.WriteLine(mySentence);
             }
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Data Types\n");
 
@@ -948,9 +922,7 @@ namespace Program
             float result3 = value3 / value1;
             Console.WriteLine($"Divide value3 by value1, display the result as a float: {result3}");
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Array Methods Sort and Reverse\n");
 
@@ -975,9 +947,7 @@ namespace Program
                 Console.WriteLine($"-- {pallet}");
             }
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Array Methods Clear and Resize\n");
 
@@ -1030,9 +1000,7 @@ namespace Program
                 }
             }
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Array Methods Split and Join\n");
 
@@ -1062,9 +1030,7 @@ namespace Program
             }
             Console.WriteLine("");
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Array Methods Reverse the Words in a Sentence\n");
             string pangram = "The quick brown fox jumps over the lazy dog";
@@ -1084,9 +1050,7 @@ namespace Program
             string resultR = String.Join(" ", newMessageR);
             Console.WriteLine(resultR);
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Array Methods Parse Orders, Sort Orders and Tag Errors\n");
 
@@ -1107,9 +1071,7 @@ namespace Program
                 }
             }
 
-            Console.WriteLine("");
-            Console.WriteLine("Press the Enter key to continue");
-            Console.ReadLine();
+            pauseHitEnterToContinue();
 
             Console.WriteLine("############################ Composite Formatting\n");
 
