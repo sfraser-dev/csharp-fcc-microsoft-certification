@@ -661,7 +661,7 @@ namespace Program
             Console.WriteLine("\n############################ For Loops\n");
 
             // fizzbuzz
-            for (int i = 1; i < 101; i++)
+            for (int i = 1; i < 101; ++i)
             {
                 // index printed with "space" padding width 3
                 if ((i % 3 == 0) && (i % 5 == 0))
@@ -760,7 +760,7 @@ namespace Program
             // project 3
             string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
             int stringsCount = myStrings.Length;
-            for (int i = 0; i < stringsCount; i++)
+            for (int i = 0; i < stringsCount; ++i)
             {
                 string myString = myStrings[i];
                 int periodLocation = myString.IndexOf(".");
@@ -872,6 +872,151 @@ namespace Program
                 Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {result2}");
                 float result3 = value3 / value1;
                 Console.WriteLine($"Divide value3 by value1, display the result as a float: {result3}");
+                Console.WriteLine("");
+
+                Console.WriteLine("\n############################ Array Methods Sort and Reverse\n");
+
+                string[] pallets = { "B14", "A11", "B12", "A13" };
+                Console.WriteLine("Original...");
+                foreach (var pallet in pallets)
+                {
+                    Console.WriteLine($"-- {pallet}");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("Sorted...");
+                Array.Sort(pallets);
+                foreach (var pallet in pallets)
+                {
+                    Console.WriteLine($"-- {pallet}");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("Reversed...");
+                Array.Reverse(pallets);
+                foreach (var pallet in pallets)
+                {
+                    Console.WriteLine($"-- {pallet}");
+                }
+                Console.WriteLine("");
+
+                Console.WriteLine("\n############################ Array Methods Clear and Resize\n");
+
+                string[] pallets2 = { "B14", "A11", "B12", "A13" };
+                Console.WriteLine("");
+                Console.WriteLine($"Before: {pallets2[0]}");
+                Array.Clear(pallets2, 0, 2);
+                Console.WriteLine($"After: {pallets2[0]}");
+                Console.WriteLine($"Clearing 2 ... count: {pallets2.Length}");
+                foreach (var pallet in pallets2)
+                {
+                    Console.WriteLine($"-- {pallet}");
+                }
+                Console.WriteLine("");
+
+                // resize the array to remove elements
+                string[] pallets3 = { "B14", "A11", "B12", "A13" };
+                Console.WriteLine("");
+                Array.Clear(pallets3, 0, 2);
+                Console.WriteLine($"Clearing 2 ... count: {pallets3.Length}");
+                foreach (var pallet in pallets3)
+                {
+                    Console.WriteLine($"-- {pallet}");
+                }
+                Console.WriteLine("");
+                Array.Resize(ref pallets3, 6);
+                Console.WriteLine($"Resizing 6 ... count: {pallets3.Length}");
+                pallets3[4] = "C01";
+                pallets3[5] = "C02";
+                foreach (var pallet in pallets3)
+                {
+                    Console.WriteLine($"-- {pallet}");
+                }
+                Console.WriteLine("");
+                Array.Resize(ref pallets3, 3);
+                Console.WriteLine($"Resizing 3 ... count: {pallets3.Length}");
+                foreach (var pallet in pallets3)
+                {
+                    Console.WriteLine($"-- {pallet}");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("Search for nulls in the array now of size 3");
+                for (int j = 0; j < pallets3.Length; ++j)
+                {
+                    if (pallets3[j] == null)
+                    {
+                        Console.WriteLine("-- null");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"-- {pallets3[j]}");
+                    }
+                }
+                Console.WriteLine("");
+
+                Console.WriteLine("\n############################ Array Methods Split and Join\n");
+
+                Console.WriteLine("String to char array, reverse, then back to string");
+                string val = "abc123";
+                char[] valueArray = val.ToCharArray();
+                Array.Reverse(valueArray);
+                // string res = new string(valueArray);
+                string res = String.Join(",", valueArray);
+                Console.WriteLine(res);
+                Console.WriteLine("");
+
+                Console.WriteLine("Split comma-separated-value string into an array of strings");
+                string dumpyStr = "abc123";
+                Console.WriteLine(dumpyStr);
+                // to char array
+                char[] dumpyCharArr = dumpyStr.ToCharArray();
+                Array.Reverse(dumpyCharArr);
+                // create csv string from char array
+                string dumpyStr2 = String.Join(",", dumpyCharArr);
+                Console.WriteLine(dumpyStr2);
+                // create array of strings by splitting at the commas
+                string[] items = dumpyStr2.Split(',');
+                foreach (string item in items)
+                {
+                    Console.Write(item + " ");
+                }
+                Console.WriteLine("");
+
+                Console.WriteLine("\n############################ Array Methods Reverse the Words in a Sentence\n");
+                string pangram = "The quick brown fox jumps over the lazy dog";
+                Console.WriteLine(pangram);
+                // Step 1
+                string[] messageR = pangram.Split(' ');
+                //Step 2
+                string[] newMessageR = new string[messageR.Length];
+                // Step 3
+                for (int k = 0; k < messageR.Length; ++k)
+                {
+                    char[] lettersR = messageR[k].ToCharArray();
+                    Array.Reverse(lettersR);
+                    newMessageR[k] = new string(lettersR);
+                }
+                //Step 4
+                string resultR = String.Join(" ", newMessageR);
+                Console.WriteLine(resultR);
+
+                Console.WriteLine("\n############################ Array Methods Parse Orders, Sort Orders and Tag Errors\n");
+
+                // error if order doesn't have four characters
+                string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+                Console.WriteLine(orderStream);
+                string[] itemsOrder = orderStream.Split(',');
+                Array.Sort(itemsOrder);
+                foreach (var item in itemsOrder)
+                {
+                    if (item.Length == 4)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    else
+                    {
+                        Console.WriteLine(item + "\t- Error");
+                    }
+                }
+                Console.WriteLine("");
             }
         }
     }
