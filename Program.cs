@@ -71,9 +71,10 @@
     return (currentStudentGrade, currentStudentLetterGrade);
 }
 
-void printArray(int[] arr)
+// generic function
+void printArray<T>(T[] arr)
 {
-    foreach (int e in arr)
+    foreach (T e in arr)
     {
         Console.Write(e + " ");
     }
@@ -101,7 +102,7 @@ int[] myAppendArr(int[] arrIn, int[] newVals, string name)
     //arrIn = list.ToArray(); 
     var arrOut = list.ToArray();
     Console.Write($"{name}'s extra credit scores:\t");
-    printArray(arrOut);
+    printArray<int>(arrOut);
     Console.WriteLine();
     return arrOut;
 }
@@ -990,12 +991,11 @@ pauseHitEnterToContinue();
 Console.WriteLine("############################ Array Methods Split() and Join()\n");
 
 Console.WriteLine("String to char array, reverse, then back to string");
-string val = "abc123";
-char[] valueArray = val.ToCharArray();
-Array.Reverse(valueArray);
-// string res = new string(valueArray);
-string res = String.Join(",", valueArray);
-Console.WriteLine(res);
+string strOrig = "abc123";
+char[] charArray = strOrig.ToCharArray();
+Array.Reverse(charArray);
+string strJoined = String.Join(",", charArray);
+Console.WriteLine(strJoined);
 Console.WriteLine("");
 
 Console.WriteLine("Split comma-separated-value string into an array of strings");
@@ -1297,7 +1297,62 @@ while (true)
     int lengthDiff = closingPositionDiff - openingPositionDiff;
     Console.WriteLine($"lengthDiff = {lengthDiff}");
     Console.WriteLine(messageDiff.Substring(openingPositionDiff, lengthDiff));
-    Console.WriteLine("");
 }
+
+pauseHitEnterToContinue();
+
+Console.WriteLine("############################ Remove() and Replace()\n");
+
+Console.WriteLine("Remove():");
+Console.WriteLine("00        10        20        30        ");
+Console.WriteLine("0123456789012345678901234567890123456789");
+string dataMv = "12345John Smith          5000  3  ";
+Console.WriteLine(dataMv);
+string updatedDataMv = dataMv.Remove(5, 4);
+Console.WriteLine("Remove(5, 5)");
+Console.WriteLine(updatedDataMv);
+Console.WriteLine("");
+
+Console.WriteLine("Replace():");
+string messageRep = "This--is--ex-amp-le--da-ta";
+Console.WriteLine(messageRep);
+messageRep = messageRep.Replace("--", "_");
+messageRep = messageRep.Replace("-", "");
+Console.WriteLine("Replace('--', '_')");
+Console.WriteLine("Replace('-', '')");
+Console.WriteLine(messageRep);
+
+pauseHitEnterToContinue();
+
+Console.WriteLine("############################ Extract, Replace, and Remove Data from an Input String\n");
+
+Console.WriteLine("Grab value between the span tags, replace '&trade' with '&reg' and remove the div tags");
+Console.WriteLine("");
+const string inputH = "<div><h2>Widgets &trade;</h2><span>5000</span></div>";
+string quantity = "";
+string output = "";
+// Extract the "quantity"
+const string openSpanH = "<span>";
+const string closeSpanH = "</span>";
+int quantityStart = inputH.IndexOf(openSpanH) + openSpanH.Length; // + length of <span> so index at end of <span> tag
+int quantityEnd= inputH.IndexOf(closeSpanH);
+int quantityLength = quantityEnd - quantityStart;
+quantity = inputH.Substring(quantityStart, quantityLength);
+quantity = $"Quantity: {quantity}";
+// Set output to input, replacing the trademark symbol with the registered trademark symbol
+const string tradeSymbol = "&trade;";
+const string regSymbol = "&reg;";
+output = inputH.Replace(tradeSymbol, regSymbol);
+// Remove the opening <div> tag
+const string openDiv = "<div>";
+int divStart = output.IndexOf(openDiv);
+output = output.Remove(divStart, openDiv.Length);
+// Remove the closing </div> tag and add "Output:" to the beginning
+const string closeDiv = "</div>";
+int divCloseStart = output.IndexOf(closeDiv);
+output = "Output: " + output.Remove(divCloseStart, closeDiv.Length);
+Console.WriteLine($"Input: {inputH}");
+Console.WriteLine(quantity);
+Console.WriteLine(output);
 
 pauseHitEnterToContinue();
