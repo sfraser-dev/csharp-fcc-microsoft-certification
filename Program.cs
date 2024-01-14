@@ -9,7 +9,6 @@
 // swl-> System.Console.WriteLine(""); 
 // swi-> System.Console.WriteLine($"{}");   // <ctrl>-<space> helpful for setting value 
 
-
 // tuple return type (tuple can contain different types)
 (decimal, string) getStudentGrade(int[] studentScores)
 {
@@ -299,7 +298,7 @@ Console.WriteLine($"x={x}");
 
 pauseHitEnterToContinue();
 
-Console.WriteLine("############################ Dice Game with Random and Next\n");
+Console.WriteLine("############################ Dice Game with Random() and Next()\n");
 
 // random values
 // Random dice1 = new Random();
@@ -495,7 +494,7 @@ Console.WriteLine("Logan:\t\t" + loganScore + "\tA-");
 
 pauseHitEnterToContinue();
 
-Console.WriteLine("############################ Calc Student Scores Using Arrays, Foreach and Function\n");
+Console.WriteLine("############################ Calc Student Scores Using Arrays, Foreach and a Function\n");
 
 int[] sophiaScoresArr = [90, 86, 87, 98, 100];
 int[] andrewScoresArr = [92, 89, 81, 96, 90];
@@ -910,7 +909,7 @@ Console.WriteLine($"Divide value3 by value1, display the result as a float: {res
 
 pauseHitEnterToContinue();
 
-Console.WriteLine("############################ Array Methods Sort and Reverse\n");
+Console.WriteLine("############################ Array Methods Sort() and Reverse()\n");
 
 string[] pallets = ["B14", "A11", "B12", "A13"];
 Console.WriteLine("Original...");
@@ -935,7 +934,7 @@ foreach (var pallet in pallets)
 
 pauseHitEnterToContinue();
 
-Console.WriteLine("############################ Array Methods Clear and Resize\n");
+Console.WriteLine("############################ Array Methods Clear() and Resize()\n");
 
 string[] pallets2 = ["B14", "A11", "B12", "A13"];
 Console.WriteLine($"Before: {pallets2[0]}");
@@ -988,7 +987,7 @@ for (int j = 0; j < pallets3.Length; ++j)
 
 pauseHitEnterToContinue();
 
-Console.WriteLine("############################ Array Methods Split and Join\n");
+Console.WriteLine("############################ Array Methods Split() and Join()\n");
 
 Console.WriteLine("String to char array, reverse, then back to string");
 string val = "abc123";
@@ -1038,7 +1037,7 @@ Console.WriteLine(resultR);
 
 pauseHitEnterToContinue();
 
-Console.WriteLine("############################ Array Methods Parse Orders, Sort Orders and Tag Errors\n");
+Console.WriteLine("############################ Array Methods, Parse Orders, Sort Orders and Tag Errors\n");
 
 // error if order doesn't have four characters
 string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
@@ -1134,12 +1133,14 @@ Console.WriteLine("");
 
 Console.WriteLine("Pad left with twelve spaces:");
 string input = "Pad this')";
-Console.WriteLine("1234567890123456789012345678901234567890"); // easily count output padding
+Console.WriteLine("1        10        20        30        40");
+Console.WriteLine("1234567890123456789012345678901234567890123456789"); // easily see output padding
 Console.WriteLine(input.PadLeft(12));
 Console.WriteLine("");
 
 Console.WriteLine("Pad with twelve hyphens '-', first left then right):");
-Console.WriteLine("1234567890123456789012345678901234567890"); // easily count output padding
+Console.WriteLine("1        10        20        30        40");
+Console.WriteLine("1234567890123456789012345678901234567890123456789"); // easily see output padding
 Console.WriteLine(input.PadLeft(12, '-'));
 Console.WriteLine(input.PadRight(12, '-'));
 Console.WriteLine("");
@@ -1151,12 +1152,13 @@ string paymentAmount = "$5,000.00";
 var formattedLine = paymentId.PadRight(6);
 formattedLine += payeeName.PadRight(24);
 formattedLine += paymentAmount.PadLeft(10);
-Console.WriteLine("1234567890123456789012345678901234567890"); // easily count output padding
+Console.WriteLine("1        10        20        30        40");
+Console.WriteLine("1234567890123456789012345678901234567890123456789"); // easily see output padding
 Console.WriteLine(formattedLine);
 
 pauseHitEnterToContinue();
 
-Console.WriteLine("############################ Apply string interpolation to a form letter");
+Console.WriteLine("############################ Apply string interpolation to a form letter\n");
 
 string customerName = "Ms. Barros";
 string currentProduct = "Magic Yield";
@@ -1185,15 +1187,117 @@ Console.WriteLine(comparisonMessage);
 
 pauseHitEnterToContinue();
 
-Console.WriteLine("############################ IndexOf() and Substring()");
+Console.WriteLine("############################ IndexOf() and Substring()\n");
 
-Console.WriteLine("1234567890123456789012345678901234567890");
+Console.WriteLine("00        10        20        30        40");
+Console.WriteLine("01234567890123456789012345678901234567890123456789"); // easily see string index
 string messageY = "Find what is (inside the parentheses)";
 Console.WriteLine(messageY);
+Console.WriteLine("");
 int openingPositionY = messageY.IndexOf('(');
 int closingPositionY = messageY.IndexOf(')');
-Console.WriteLine($"\topening ( position = {openingPositionY}");
-Console.WriteLine($"\tclosing ) position = {closingPositionY}");
+Console.WriteLine($"\topening ( index = {openingPositionY}");
+Console.WriteLine($"\tclosing ) index = {closingPositionY}");
 openingPositionY += 1;
 int lengthY = closingPositionY - openingPositionY;
-Console.WriteLine("\t" + messageY.Substring(openingPositionY, lengthY));
+Console.WriteLine(string.Concat("\t", messageY.Substring(openingPositionY, lengthY)));
+Console.WriteLine("");
+
+Console.WriteLine("00        10        20        30        40        50");
+Console.WriteLine("012345678901234567890123456789012345678901234567890123456789"); // easily see string index
+string messageSpan = "What are the words <span>between the tags</span>?";
+Console.WriteLine(messageSpan);
+Console.WriteLine("");
+const string openSpan = "<span>";
+const string closeSpan = "</span>";
+int openingPositionSpan = messageSpan.IndexOf(openSpan);
+int closingPositionSpan = messageSpan.IndexOf(closeSpan);
+openingPositionSpan += openSpan.Length;
+int lengthSpan = closingPositionSpan - openingPositionSpan;
+Console.WriteLine(messageSpan.Substring(openingPositionSpan, lengthSpan));
+
+pauseHitEnterToContinue();
+
+Console.WriteLine("############################ IndexOfAny() and LastIndexOf()\n");
+
+// easily see string index
+Console.WriteLine("00        10        20        30        40        50        60        70");
+Console.WriteLine("01234567890123456789012345678901234567890123456789012345678901234567890123456789");
+string messageLast = "(What if) I am (only interested) in the last (set of parentheses)?";
+Console.WriteLine(messageLast);
+Console.WriteLine("");
+int openingPositionLast = messageLast.LastIndexOf('(');
+Console.WriteLine($"openingPositionLast = {openingPositionLast}");
+openingPositionLast += 1;
+int closingPositionLast = messageLast.LastIndexOf(')');
+Console.WriteLine($"closingPositionLast = {closingPositionLast}");
+int lengthLast = closingPositionLast - openingPositionLast;
+Console.WriteLine(messageLast.Substring(openingPositionLast, lengthLast));
+Console.WriteLine("");
+
+Console.WriteLine("00        10        20        30        40        50        60        70");
+Console.WriteLine("01234567890123456789012345678901234567890123456789012345678901234567890123456789");
+string messageAll = "(What if) there are (more than) one (set of parentheses)?";
+Console.WriteLine(messageAll);
+Console.WriteLine("");
+while (true)
+{
+    int openingPosition = messageAll.IndexOf('(');
+    if (openingPosition == -1) break;
+    openingPosition += 1;
+    int closingPosition = messageAll.IndexOf(')');
+    int length = closingPosition - openingPosition;
+    Console.WriteLine(messageAll.Substring(openingPosition, length));
+    // Substring(startPos) defaults to the end, or can use Substring(startPos, length)
+    // messageAll = messageAll.Substring(closingPosition + 1);
+    // 
+    // use range.. operator to simplify Substring
+    messageAll = messageAll[(closingPosition + 1)..];
+}
+Console.WriteLine("");
+
+Console.WriteLine("00        10        20        30        40        50        60        70        80        90");
+Console.WriteLine("0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+string messageDiff = "(What if) I have [different symbols] but every {open symbol} needs a [matching closing symbol]?";
+Console.WriteLine(messageDiff);
+Console.WriteLine("");
+// IndexOfAny() requires a char array of characters - look for:
+char[] openSymbolsDiff = { '[', '{', '(' };
+// use a slightly different technique for iterating through 
+// the characters in the string. this time, use the closing 
+// position of the previous iteration as the starting index for the 
+// next open symbol. so, initialize closingPosition to zero
+int closingPositionDiff = 0;
+while (true)
+{
+    int openingPositionDiff = messageDiff.IndexOfAny(openSymbolsDiff, closingPositionDiff);
+    Console.WriteLine($"openingPositionDiff = {openingPositionDiff}");
+    if (openingPositionDiff == -1) break;
+    string currentSymbolDiff = messageDiff.Substring(openingPositionDiff, 1);
+    // find the matching closing symbol
+    char matchingSymbolDiff = ' ';
+    switch (currentSymbolDiff)
+    {
+        case "[":
+            matchingSymbolDiff = ']';
+            break;
+        case "{":
+            matchingSymbolDiff = '}';
+            break;
+        case "(":
+            matchingSymbolDiff = ')';
+            break;
+    }
+    // to find the closingPosition, use an overload of the IndexOf method to specify 
+    // that the search for the matchingSymbol should start at the openingPosition in the string. 
+    openingPositionDiff += 1;
+    closingPositionDiff = messageDiff.IndexOf(matchingSymbolDiff, openingPositionDiff);
+    Console.WriteLine($"closingPositionDiff = {closingPositionDiff}");
+    // display the sub-string:
+    int lengthDiff = closingPositionDiff - openingPositionDiff;
+    Console.WriteLine($"lengthDiff = {lengthDiff}");
+    Console.WriteLine(messageDiff.Substring(openingPositionDiff, lengthDiff));
+    Console.WriteLine("");
+}
+
+pauseHitEnterToContinue();
