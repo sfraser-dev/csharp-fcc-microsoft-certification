@@ -13,6 +13,17 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        void TellFortune(int luck, string[] good, string[] bad, string[] neutral, string[] text)
+        {
+            Console.WriteLine("A fortune teller whispers the following words:");
+            string[] fortune = luck > 75 ? good : (luck < 25 ? bad : neutral);
+            for (int i = 0; i < 4; i++)
+            {
+                Console.Write($"{text[i]} {fortune[i]} ");
+            }
+            Console.WriteLine("");
+        }
+
         bool ValidateLength(string[] address)
         {
             return address.Length == 4;
@@ -1517,8 +1528,23 @@ internal class Program
                 Console.WriteLine($"{ip} is an invalid IPv4 address");
             }
         }
+        Console.WriteLine("");
 
-        PauseHitEnterToContinue();
-
+        Console.WriteLine("Fortune Teller:");
+        Random rand = new();
+        int luck = rand.Next(100);
+        string[] text = ["You have much to", "Today is a day to", "Whatever work you do", "This is an ideal time to"];
+        string[] good = ["look forward to.", "try new things!", "is likely to succeed.", "accomplish your dreams!"];
+        string[] bad = ["fear.", "avoid major decisions.", "may have unexpected outcomes.", "re-evaluate your life."];
+        string[] neutral = ["appreciate.", "enjoy time with friends.", "should align with your values.", "get in tune with nature."];
+        Console.WriteLine("Two random fortunes:");
+        TellFortune(luck, good, bad, neutral, text);
+        luck = rand.Next(100);
+        TellFortune(luck, good, bad, neutral, text);
+        Console.WriteLine("");
+        Console.WriteLine("Bad, neutral and good fortunes (hardcoded):");
+        TellFortune(10, good, bad, neutral, text);
+        TellFortune(50, good, bad, neutral, text);
+        TellFortune(90, good, bad, neutral, text);
     }
 }
