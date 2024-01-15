@@ -10,7 +10,7 @@
 // swi-> System.Console.WriteLine($"{}");   // <ctrl>-<space> helpful for setting value 
 
 // tuple return type (tuple can contain different types)
-(decimal, string) getStudentGrade(int[] studentScores)
+(decimal, string) GetStudentGrade(int[] studentScores)
 {
     int examAssignments = 5;
     int sumAssignmentScores = 0;
@@ -72,7 +72,7 @@
 }
 
 // generic function
-void printArray<T>(T[] arr)
+void PrintArray<T>(T[] arr)
 {
     foreach (T e in arr)
     {
@@ -88,7 +88,7 @@ void printArray<T>(T[] arr)
 // "refArgIn" reference the SAME object and we can change this object in and out
 // of the function. but if we CHANGE what "refFuncLocal" is referencing, then 
 // the change won't be seen outwith the function by "refArgIn" 
-int[] myAppendArr(int[] arrIn, int[] newVals, string name)
+int[] MyAppendArr(int[] arrIn, int[] newVals, string name)
 {
     var list = arrIn.ToList();
     List<int> tempAdd = [.. newVals]; // spread operator 
@@ -102,12 +102,12 @@ int[] myAppendArr(int[] arrIn, int[] newVals, string name)
     //arrIn = list.ToArray(); 
     var arrOut = list.ToArray();
     Console.Write($"{name}'s extra credit scores:\t");
-    printArray<int>(arrOut);
+    PrintArray<int>(arrOut);
     Console.WriteLine();
     return arrOut;
 }
 
-decimal getStudentScore(int[] arr, int len, int curAss)
+decimal GetStudentScore(int[] arr, int len, int curAss)
 {
     int sum = 0;
     foreach (int e in arr)
@@ -117,7 +117,7 @@ decimal getStudentScore(int[] arr, int len, int curAss)
     return (decimal)sum / curAss;
 }
 
-string calcGrade(decimal val)
+string CalcGrade(decimal val)
 {
     if (val >= 97.0m)
     {
@@ -145,7 +145,7 @@ string calcGrade(decimal val)
     }
 }
 
-void pauseHitEnterToContinue()
+void PauseHitEnterToContinue()
 {
     Console.WriteLine("");
     Console.WriteLine("Press the Enter key to continue");
@@ -200,12 +200,12 @@ Console.WriteLine("Jeong: " + jeongSum + "\n");
 
 // print average score and its corresponding grade in formatted table
 Console.WriteLine("Student\t\tGrade\n");
-Console.WriteLine("Sophia:\t\t " + sophiaScore + "\t" + calcGrade(sophiaScore));
-Console.WriteLine("Nicolas:\t " + nicolasScore + "\t" + calcGrade(nicolasScore));
-Console.WriteLine("Zahirah:\t " + zahirahScore + "\t" + calcGrade(zahirahScore));
-Console.WriteLine("Jeong:\t\t " + jeongScore + "\t" + calcGrade(jeongScore));
+Console.WriteLine("Sophia:\t\t " + sophiaScore + "\t" + CalcGrade(sophiaScore));
+Console.WriteLine("Nicolas:\t " + nicolasScore + "\t" + CalcGrade(nicolasScore));
+Console.WriteLine("Zahirah:\t " + zahirahScore + "\t" + CalcGrade(zahirahScore));
+Console.WriteLine("Jeong:\t\t " + jeongScore + "\t" + CalcGrade(jeongScore));
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Calc Sophia's GPA\n");
 
@@ -261,7 +261,7 @@ Console.WriteLine($"{course5Name}\t\t\t{course5Grade}\t\t{course5Credit}");
 
 Console.WriteLine($"\nFinal GPA:\t\t\t{leadingDigit}.{firstDigit}{secondDigit}");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ If/Else Challenge\n");
 
@@ -290,14 +290,14 @@ if (discountPercentage > 0)
     Console.WriteLine($"Renew now and save {discountPercentage}%.");
 }
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Decimal Type\n");
 
 decimal x = 7 / 5;
 Console.WriteLine($"x={x}");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Dice Game with Random() and Next()\n");
 
@@ -357,7 +357,7 @@ else
     Console.WriteLine("Sorry, you lose.");
 }
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Math Max\n");
 
@@ -367,7 +367,7 @@ int largerValue = Math.Max(firstValue, secondValue);
 Console.WriteLine($"The two numbers are {firstValue} and {secondValue}");
 Console.WriteLine($"The largest is: {largerValue}");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Arrays\n");
 
@@ -401,7 +401,7 @@ foreach (int itms in inventory)
 }
 Console.WriteLine($"We have {sum} items in inventory.");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Nested Iteration\n");
 string[] fraudulentOrderID3 = ["B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179"];
@@ -413,7 +413,7 @@ foreach (string s in fraudulentOrderID3)
     }
 }
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Code Readability\n");
 
@@ -444,7 +444,7 @@ Console.WriteLine(originalMessage);
 Console.WriteLine(newMessage);
 Console.WriteLine($"'o' appears {letterCount} times.");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Calc Student Scores Simply\n");
 
@@ -493,7 +493,7 @@ Console.WriteLine("Andrew:\t\t" + andrewScore + "\tB+");
 Console.WriteLine("Emma:\t\t" + emmaScore + "\tB");
 Console.WriteLine("Logan:\t\t" + loganScore + "\tA-");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Calc Student Scores Using Arrays, Foreach and a Function\n");
 
@@ -502,10 +502,10 @@ int[] andrewScoresArr = [92, 89, 81, 96, 90];
 int[] emmaScoresArr = [90, 85, 87, 98, 68];
 int[] loganScoresArr = [90, 95, 87, 88, 96];
 
-sophiaScore = getStudentScore(sophiaScoresArr, sophiaScoresArr.Length, currentAssignments);
-andrewScore = getStudentScore(andrewScoresArr, andrewScoresArr.Length, currentAssignments);
-emmaScore = getStudentScore(emmaScoresArr, emmaScoresArr.Length, currentAssignments);
-loganScore = getStudentScore(loganScoresArr, loganScoresArr.Length, currentAssignments);
+sophiaScore = GetStudentScore(sophiaScoresArr, sophiaScoresArr.Length, currentAssignments);
+andrewScore = GetStudentScore(andrewScoresArr, andrewScoresArr.Length, currentAssignments);
+emmaScore = GetStudentScore(emmaScoresArr, emmaScoresArr.Length, currentAssignments);
+loganScore = GetStudentScore(loganScoresArr, loganScoresArr.Length, currentAssignments);
 
 Console.WriteLine("Student\t\tGrade\n");
 Console.WriteLine("Sophia:\t\t" + sophiaScore + "\t?");
@@ -513,15 +513,15 @@ Console.WriteLine("Andrew:\t\t" + andrewScore + "\t?");
 Console.WriteLine("Emma:\t\t" + emmaScore + "\t?");
 Console.WriteLine("Logan:\t\t" + loganScore + "\t?");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Student Extra Credits\n");
 
 // existing students, appending extra credits
-sophiaScoresArr = myAppendArr(sophiaScoresArr, [94, 90], "sophia");
-andrewScoresArr = myAppendArr(andrewScoresArr, [89], "andrew");
-emmaScoresArr = myAppendArr(emmaScoresArr, [89, 89, 89], "emma ");
-loganScoresArr = myAppendArr(loganScoresArr, [96], "logan");
+sophiaScoresArr = MyAppendArr(sophiaScoresArr, [94, 90], "sophia");
+andrewScoresArr = MyAppendArr(andrewScoresArr, [89], "andrew");
+emmaScoresArr = MyAppendArr(emmaScoresArr, [89, 89, 89], "emma ");
+loganScoresArr = MyAppendArr(loganScoresArr, [96], "logan");
 // new students just added
 // simplifying collection initialisation via collection expression
 // int[] beckyScoresArr = new int[] {92, 91, 90, 91, 92, 92, 92};
@@ -532,26 +532,26 @@ int[] gregorScoresArr = [91, 91, 91, 91, 91, 91, 91];
 
 // existing students (tuple returns!)
 Console.WriteLine("Student\t\tGrade\tGrade Letter");
-(decimal sophiaGrade, string sophiaLetterGrade) = getStudentGrade(sophiaScoresArr);
+(decimal sophiaGrade, string sophiaLetterGrade) = GetStudentGrade(sophiaScoresArr);
 Console.WriteLine($"sophia\t\t{sophiaGrade}\t{sophiaLetterGrade}");
-(decimal andrewGrade, string andrewLetterGrade) = getStudentGrade(andrewScoresArr);
+(decimal andrewGrade, string andrewLetterGrade) = GetStudentGrade(andrewScoresArr);
 Console.WriteLine($"sophia\t\t{andrewGrade}\t{andrewLetterGrade}");
-(decimal emmaGrade, string emmaLetterGrade) = getStudentGrade(emmaScoresArr);
+(decimal emmaGrade, string emmaLetterGrade) = GetStudentGrade(emmaScoresArr);
 Console.WriteLine($"emma\t\t{emmaGrade}\t{emmaLetterGrade}");
-(decimal loganGrade, string loganLetterGrade) = getStudentGrade(loganScoresArr);
+(decimal loganGrade, string loganLetterGrade) = GetStudentGrade(loganScoresArr);
 Console.WriteLine($"logan\t\t{loganGrade}\t{loganLetterGrade}");
 
 // new students (tuple returns!)
-(decimal beckyGrade, string beckyLetterGrade) = getStudentGrade(beckyScoresArr);
+(decimal beckyGrade, string beckyLetterGrade) = GetStudentGrade(beckyScoresArr);
 Console.WriteLine($"becky\t\t{beckyGrade}\t{beckyLetterGrade}");
-(decimal chrisGrade, string chrisLetterGrade) = getStudentGrade(chrisScoresArr);
+(decimal chrisGrade, string chrisLetterGrade) = GetStudentGrade(chrisScoresArr);
 Console.WriteLine($"chris\t\t{chrisGrade}\t{chrisLetterGrade}");
-(decimal ericGrade, string ericLetterGrade) = getStudentGrade(ericScoresArr);
+(decimal ericGrade, string ericLetterGrade) = GetStudentGrade(ericScoresArr);
 Console.WriteLine($"eric\t\t{ericGrade}\t{ericLetterGrade}");
-(decimal gregorGrade, string gregorLetterGrade) = getStudentGrade(gregorScoresArr);
+(decimal gregorGrade, string gregorLetterGrade) = GetStudentGrade(gregorScoresArr);
 Console.WriteLine($"gregor\t\t{gregorGrade}\t{gregorLetterGrade}");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Boolean Expressions\n");
 
@@ -605,7 +605,7 @@ if (found)
 
 Console.WriteLine($"Total: {tot}");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Switch Statement and Switch Expression\n");
 
@@ -669,7 +669,7 @@ size = product[2] switch
 
 Console.WriteLine($"Product: {size} {color} {type}");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ For Loops\n");
 
@@ -687,7 +687,7 @@ for (int i = 1; i < 101; ++i)
         Console.WriteLine($"{i,3}");
 }
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Do While Statement\n");
 
@@ -710,7 +710,7 @@ do
 
 Console.WriteLine(hero > monster ? "Hero wins!" : "Monster wins!");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Project 1\n");
 
@@ -750,7 +750,7 @@ do
 
 Console.WriteLine($"Your input value ({numValue}) has been accepted.");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Project 2\n");
 
@@ -784,7 +784,7 @@ do
 } while (validEntry == false);
 Console.WriteLine($"Your input value ({roleName}) has been accepted.");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Project 3\n");
 
@@ -814,7 +814,7 @@ for (int i = 0; i < stringsCount; ++i)
     Console.WriteLine(mySentence);
 }
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Data Types\n");
 
@@ -908,7 +908,7 @@ Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {r
 float result3 = value3 / value1;
 Console.WriteLine($"Divide value3 by value1, display the result as a float: {result3}");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Array Methods Sort() and Reverse()\n");
 
@@ -933,7 +933,7 @@ foreach (var pallet in pallets)
     Console.WriteLine($"-- {pallet}");
 }
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Array Methods Clear() and Resize()\n");
 
@@ -986,7 +986,7 @@ for (int j = 0; j < pallets3.Length; ++j)
     }
 }
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Array Methods Split() and Join()\n");
 
@@ -1015,7 +1015,7 @@ foreach (string item in items)
 }
 Console.WriteLine("");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Array Methods Reverse the Words in a Sentence\n");
 string pangram = "The quick brown fox jumps over the lazy dog";
@@ -1035,7 +1035,7 @@ for (int k = 0; k < messageR.Length; ++k)
 string resultR = String.Join(" ", newMessageR);
 Console.WriteLine(resultR);
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Array Methods, Parse Orders, Sort Orders and Tag Errors\n");
 
@@ -1056,7 +1056,7 @@ foreach (var item in itemsOrder)
     }
 }
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Composite Formatting\n");
 // local currency {value:C}
@@ -1123,7 +1123,7 @@ Console.WriteLine($"     Sub Total: {subtotal:C}");
 Console.WriteLine($"           Tax: {taxPercentage:P2}");
 Console.WriteLine($"     Total Billed: {totalNow:C}");
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Padding and Alignment\n");
 
@@ -1156,7 +1156,7 @@ Console.WriteLine("1        10        20        30        40");
 Console.WriteLine("1234567890123456789012345678901234567890123456789"); // easily see output padding
 Console.WriteLine(formattedLine);
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Apply string interpolation to a form letter\n");
 
@@ -1185,7 +1185,7 @@ comparisonMessage += String.Format("{0:C}", newProfit).PadRight(20);
 
 Console.WriteLine(comparisonMessage);
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ IndexOf() and Substring()\n");
 
@@ -1216,7 +1216,7 @@ openingPositionSpan += openSpan.Length;
 int lengthSpan = closingPositionSpan - openingPositionSpan;
 Console.WriteLine(messageSpan.Substring(openingPositionSpan, lengthSpan));
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ IndexOfAny() and LastIndexOf()\n");
 
@@ -1299,7 +1299,7 @@ while (true)
     Console.WriteLine(messageDiff.Substring(openingPositionDiff, lengthDiff));
 }
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Remove() and Replace()\n");
 
@@ -1322,7 +1322,7 @@ Console.WriteLine("Replace('--', '_')");
 Console.WriteLine("Replace('-', '')");
 Console.WriteLine(messageRep);
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
 
 Console.WriteLine("############################ Extract, Replace, and Remove Data from an Input String\n");
 
@@ -1355,4 +1355,4 @@ Console.WriteLine($"Input: {inputH}");
 Console.WriteLine(quantity);
 Console.WriteLine(output);
 
-pauseHitEnterToContinue();
+PauseHitEnterToContinue();
