@@ -10,6 +10,8 @@
 // swi-> System.Console.WriteLine($"{}");   // <ctrl>-<space> helpful for setting value 
 
 // tuple return type (tuple can contain different types)
+using System.ComponentModel.DataAnnotations;
+
 (decimal, string) GetStudentGrade(int[] studentScores)
 {
     int examAssignments = 5;
@@ -150,6 +152,45 @@ void PauseHitEnterToContinue()
     Console.WriteLine("");
     Console.WriteLine("Press the Enter key to continue");
     Console.ReadLine();
+}
+
+void DisplayTimes(int[] times)
+{
+    // Format and display medicine times
+    //  800 ->  8:00
+    // 1200 -> 12:00
+    //   35 ->  0:35
+    //    1 ->  0:01
+    foreach (int val in times)
+    {
+        string time = val.ToString();
+        int len = time.Length;
+
+        if (len >= 3)
+        {
+            time = time.Insert(len - 2, ":");
+        }
+        else if (len == 2)
+        {
+            time = time.Insert(0, "0:");
+        }
+        else
+        {
+            time = time.Insert(0, "0:0");
+        }
+
+        Console.Write($"{time} ");
+    }
+    Console.WriteLine();
+}
+
+void AdjustTimes(int[] times, int diff)
+{
+    /* Adjust the times by adding the difference, keeping the value within 24 hours */
+    for (int i = 0; i < times.Length; i++)
+    {
+        times[i] = ((times[i] + diff)) % 2400;
+    }
 }
 
 Console.WriteLine("");
@@ -994,7 +1035,7 @@ Console.WriteLine("String to char array, reverse, then back to string");
 string strOrig = "abc123";
 char[] charArray = strOrig.ToCharArray();
 Array.Reverse(charArray);
-string strJoined = String.Join(",", charArray);
+string strJoined = string.Join(",", charArray);
 Console.WriteLine(strJoined);
 Console.WriteLine("");
 
@@ -1335,7 +1376,7 @@ string output = "";
 const string openSpanH = "<span>";
 const string closeSpanH = "</span>";
 int quantityStart = inputH.IndexOf(openSpanH) + openSpanH.Length; // + length of <span> so index at end of <span> tag
-int quantityEnd= inputH.IndexOf(closeSpanH);
+int quantityEnd = inputH.IndexOf(closeSpanH);
 int quantityLength = quantityEnd - quantityStart;
 quantity = inputH.Substring(quantityStart, quantityLength);
 quantity = $"Quantity: {quantity}";
@@ -1356,3 +1397,60 @@ Console.WriteLine(quantity);
 Console.WriteLine(output);
 
 PauseHitEnterToContinue();
+
+Console.WriteLine("############################ Functions\n");
+
+int[] times = [800, 1200, 1600, 2000];
+int diff = 0;
+bool successGMT = false;
+int currentGMT = 1200;
+
+do
+{
+    Console.WriteLine("Enter current GMT");
+    string? readGMT = Console.ReadLine();
+    if (readGMT != null && readGMT != "")
+    {
+        currentGMT = Convert.ToInt32(readGMT);
+        if (currentGMT != 0)
+        {
+            successGMT = true;
+        }
+    }
+} while (!successGMT);
+
+Console.WriteLine("Current Medicine Schedule:");
+DisplayTimes(times);
+
+int newGMT = 1200;
+bool successNewGMT = false;
+do
+{
+    Console.WriteLine("Enter new GMT");
+    string? readNewGMT = Console.ReadLine();
+    if (readNewGMT != null && readNewGMT != "")
+    {
+        newGMT = Convert.ToInt32(readNewGMT);
+        if (newGMT != 0){
+                successNewGMT = true;
+        }
+    }
+} while (!successNewGMT);
+
+if (Math.Abs(newGMT) > 12 || Math.Abs(currentGMT) > 12)
+{
+    Console.WriteLine("Invalid GMT");
+}
+else if (newGMT <= 0 && currentGMT <= 0 || newGMT >= 0 && currentGMT >= 0)
+{
+    diff = 100 * (Math.Abs(newGMT) - Math.Abs(currentGMT));
+    AdjustTimes(times, diff);
+}
+else
+{
+    diff = 100 * (Math.Abs(newGMT) + Math.Abs(currentGMT));
+    AdjustTimes(times, diff);
+}
+
+Console.WriteLine("New Medicine Schedule:");
+DisplayTimes(times);
