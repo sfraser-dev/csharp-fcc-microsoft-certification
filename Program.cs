@@ -1546,5 +1546,309 @@ internal class Program
         TellFortune(10, good, bad, neutral, text);
         TellFortune(50, good, bad, neutral, text);
         TellFortune(90, good, bad, neutral, text);
+
+        PauseHitEnterToContinue();
+
+        Console.WriteLine("############################ Functions With Parameters\n");
+
+        double pi = 3.14159;
+        PrintCircleInfo(12);
+        Console.WriteLine("");
+        PrintCircleInfo(24);
+        Console.WriteLine("");
+
+        void PrintCircleArea(int radius)
+        {
+            double area = pi * (radius * radius);
+            Console.WriteLine($"Area = {area}");
+        }
+
+        void PrintCircleCircumference(int radius)
+        {
+            double circumference = 2 * pi * radius;
+            Console.WriteLine($"Circumference = {circumference}");
+        }
+
+        void PrintCircleInfo(int radius)
+        {
+            Console.WriteLine($"Circle with radius {radius}");
+            PrintCircleArea(radius);
+            PrintCircleCircumference(radius);
+        }
+
+        Console.WriteLine("-------Strings are immutable but they are also reference types in C#");
+        string status = "Healthy";
+        Console.WriteLine($"Start: {status}");
+        SetHealth(status, false);
+        Console.WriteLine($"End: {status}");
+        Console.WriteLine("");
+
+        // common mistake, status will remain "Healthy" outwith the function
+        void SetHealth(string status, bool isHealthy)
+        {
+            status = isHealthy ? "Healthy" : "Unhealthy";
+            Console.WriteLine($"Middle: {status}");
+        }
+
+        Console.WriteLine("-------RSVP Application");
+        string[] guestList = ["Rebecca", "Nadia", "Noor", "Jonte"];
+        string[] rsvps = new string[10];
+        int count = 0;
+
+        RSVP("Rebecca");
+        RSVP("Nadia", 2, "Nuts");
+        RSVP(name: "Linh", partySize: 2, inviteOnly: false);
+        RSVP("Tony", allergies: "Jackfruit", inviteOnly: true);
+        RSVP("Noor", 4, inviteOnly: false);
+        RSVP("Jonte", 2, "Stone fruit", false);
+        ShowRSVPs();
+        Console.WriteLine("");
+
+        //void RSVP(string name, int partySize, string allergies, bool inviteOnly)
+        void RSVP(string name, int partySize = 1, string allergies = "none", bool inviteOnly = true) // optional parameters
+        {
+            if (inviteOnly)
+            {
+                bool found = false;
+                foreach (string guest in guestList)
+                {
+                    if (guest.Equals(name))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    Console.WriteLine($"Sorry, {name} is not on the guest list");
+                    return;
+                }
+            }
+
+            rsvps[count] = $"Name: {name}, \tParty Size: {partySize}, \tAllergies: {allergies}";
+            count++;
+        }
+
+        void ShowRSVPs()
+        {
+            Console.WriteLine("Total RSVPs:");
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine(rsvps[i]);
+            }
+        }
+
+        Console.WriteLine("-------Display Email Addresses");
+        string[,] corporate =
+        {
+            {"Robert", "Bavin"}, {"Simon", "Bright"},
+            {"Kim", "Sinclair"}, {"Aashrita", "Kamath"},
+            {"Sarah", "Delucchi"}, {"Sinan", "Ali"}
+        };
+
+        string[,] external =
+        {
+            {"Vinnie", "Ashton"}, {"Cody", "Dysart"},
+            {"Shay", "Lawrence"}, {"Daren", "Valdes"}
+        };
+
+        string externalDomain = "hayworth.com";
+
+        for (int i = 0; i < corporate.GetLength(0); i++)
+        {
+            DisplayEmail(first: corporate[i, 0], last: corporate[i, 1]);
+        }
+
+        for (int i = 0; i < external.GetLength(0); i++)
+        {
+            DisplayEmail(first: external[i, 0], last: external[i, 1], domain: externalDomain);
+        }
+
+        void DisplayEmail(string first, string last, string domain = "contoso.com")
+        {
+            string email = first.Substring(0, 2) + last;
+            email = email.ToLower();
+            Console.WriteLine($"{email}@{domain}");
+        }
+
+        PauseHitEnterToContinue();
+
+        Console.WriteLine("############################ Functions With Parameters and Returns\n");
+
+        double totalR = 0;
+        double minimumSpend = 30.00;
+
+        double[] itemsR = [15.97, 3.50, 12.25, 22.99, 10.98];
+        double[] discounts = [0.30, 0.00, 0.10, 0.20, 0.50];
+
+        for (int i = 0; i < itemsR.Length; i++)
+        {
+            totalR += GetDiscountedPrice(i);
+        }
+
+        totalR -= TotalMeetsMinimum() ? 5.00 : 0.00;
+
+        Console.WriteLine($"totalR: ${FormatDecimal(totalR)}");
+        Console.WriteLine("");
+
+        double GetDiscountedPrice(int itemIndex)
+        {
+            return itemsR[itemIndex] * (1 - discounts[itemIndex]);
+        }
+
+        bool TotalMeetsMinimum()
+        {
+            return totalR >= minimumSpend;
+        }
+
+        string FormatDecimal(double input)
+        {
+            return input.ToString().Substring(0, 5);
+
+        }
+
+        Console.WriteLine("Functions Returning Strings\n");
+        string inputSnakes = "there are snakes at the zoo";
+
+        Console.WriteLine(inputSnakes);
+        Console.WriteLine(ReverseSentence(inputSnakes));
+
+        string ReverseSentence(string inputSnakes)
+        {
+            string result = "";
+            string[] words = inputSnakes.Split(" ");
+            foreach (string word in words)
+            {
+                result += ReverseWord(word) + " ";
+            }
+            return result.Trim();
+        }
+
+        string ReverseWord(string word)
+        {
+            string result = "";
+            for (int i = word.Length - 1; i >= 0; i--)
+            {
+                result += word[i];
+            }
+            return result;
+        }
+
+        Console.WriteLine("Functions Returning Arrays\n");
+        int target = 30;
+        int[] coins = new int[] { 5, 5, 50, 25, 25, 10, 5 };
+        int[,] resultT = TwoCoins(coins, target);
+
+        if (resultT.Length == 0)
+        {
+            Console.WriteLine("No two coins make change");
+        }
+        else
+        {
+            Console.WriteLine("Change found at positions:");
+            for (int i = 0; i < resultT.GetLength(0); i++)
+            {
+                if (resultT[i, 0] == -1)
+                {
+                    break;
+                }
+                Console.WriteLine($"{resultT[i, 0]},{resultT[i, 1]}");
+            }
+        }
+        Console.WriteLine("");
+
+        int[,] TwoCoins(int[] coins, int target)
+        {
+            int[,] resultT = { { -1, -1 }, { -1, -1 }, { -1, -1 }, { -1, -1 }, { -1, -1 } };
+            int count = 0;
+
+            for (int curr = 0; curr < coins.Length; curr++)
+            {
+                for (int next = curr + 1; next < coins.Length; next++)
+                {
+                    if (coins[curr] + coins[next] == target)
+                    {
+                        resultT[count, 0] = curr;
+                        resultT[count, 1] = next;
+                        count++;
+                    }
+                    if (count == resultT.GetLength(0))
+                    {
+                        return resultT;
+                    }
+                }
+            }
+            return (count == 0) ? new int[0, 0] : resultT;
+        }
+
+        Console.WriteLine("Game With Functions");
+        Random randomX = new();
+
+        Console.WriteLine("Would you like to play? (Y/N)");
+        if (ShouldPlay())
+        {
+            PlayGame();
+        }
+
+        bool ShouldPlay()
+        {
+            // simplify for testing (run once with no user input)
+            return true;
+            /*
+            bool readSuccess = false;
+            string? response;
+            string resDefer = "";
+            do
+            {
+                response = Console.ReadLine();
+                if (response != null && response != "")
+                {
+                    readSuccess = true;
+                    resDefer = response;
+                }
+            } while (!readSuccess);
+            return resDefer.ToLower().Equals("y");
+            */
+        }
+
+        void PlayGame()
+        {
+            var play = true;
+
+            while (play)
+            {
+                var target = GetTarget();
+                var roll = RollDice();
+
+                Console.WriteLine($"Roll a number greater than {target} to win!");
+                Console.WriteLine($"You rolled a {roll}");
+                Console.WriteLine(WinOrLose(roll, target));
+                Console.WriteLine("\nPlay again? (Y/N)");
+
+                // simplify for testing (run once with no user input)
+                //play = ShouldPlay();
+                play = false;
+            }
+        }
+
+        int GetTarget()
+        {
+            return randomX.Next(1, 6);
+        }
+
+        int RollDice()
+        {
+            return randomX.Next(1, 7);
+        }
+
+        string WinOrLose(int roll, int target)
+        {
+            if (roll > target)
+            {
+                return "You win!";
+            }
+            return "You lose!";
+        }
     }
 }
+
