@@ -1914,5 +1914,49 @@ internal class Program
         PlanSchoolVisit("School A");
         PlanSchoolVisit("School B", 3);
         PlanSchoolVisit("School C", 2);
+        Console.WriteLine("");
+
+        Console.WriteLine("############################ Debug Section\n");
+        /* 
+            This code uses a names array and corresponding methods to display
+            greeting messages
+
+        */
+        /*
+            \n is the next line in unix (line feed, historically means move carriage down) 
+            \r is the next line in mac (carriage return, historically means go back to the start of the line)
+            \n\r is the next line in windows (needs both)
+            Use "Environment.NewLine" variable as this will select the appropriate newline symbol for the underlying system
+            These days, can just use \n all the time and carriage down carriage start will be implmented
+        */
+
+        string[] namesDebug = ["Sophia", "Andrew", "AllGreetings"];
+        string messageText = "";
+        foreach (string name in namesDebug)
+        {
+            if (name == "Sophia")
+                messageText = SophiaMessage();
+            else if (name == "Andrew")
+                messageText = AndrewMessage();
+            else if (name == "AllGreetings")
+            {
+                messageText = SophiaMessage() + Environment.NewLine + AndrewMessage();
+            }
+
+            Console.WriteLine(messageText + "\n\r");
+        }
+
+        static string SophiaMessage()
+        {
+            return "Hello, my name is Sophia.";
+        }
+
+        static string AndrewMessage()
+        {
+            return "Hi, my name is Andrew. Good to meet you.";
+        }
+
+        
+
     }
 }
