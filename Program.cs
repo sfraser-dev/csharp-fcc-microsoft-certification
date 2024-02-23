@@ -9,6 +9,8 @@
 // swl-> System.Console.WriteLine(""); 
 // swi-> System.Console.WriteLine($"{}");   // <ctrl>-<space> helpful for setting value 
 
+using System.Diagnostics; // for Debug.Assert()
+
 internal class Program
 {
     private static void Main(string[] args)
@@ -942,8 +944,7 @@ internal class Program
 
         // TryParse, try parsing a string to a variable (usually use out keyword too)
         string value = "102";
-        int result = 0;
-        if (int.TryParse(value, out result))
+        if (int.TryParse(value, out int result))
         {
             Console.WriteLine($"Measurement: {result}");
         }
@@ -961,9 +962,9 @@ internal class Program
         string messageAA = "";
         foreach (var valueAA in valuesAA)
         {
-            decimal numberAA; // stores the TryParse "out" value
-                              // attempt to convert element to a number
-            if (decimal.TryParse(valueAA, out numberAA))
+            // stores the TryParse "out" value
+            // attempt to convert element to a number
+            if (decimal.TryParse(valueAA, out decimal numberAA))
             {
                 totalAA += numberAA;
             }
@@ -1345,7 +1346,7 @@ internal class Program
         Console.WriteLine(messageDiff);
         Console.WriteLine("");
         // IndexOfAny() requires a char array of characters - look for:
-        char[] openSymbolsDiff = { '[', '{', '(' };
+        char[] openSymbolsDiff = ['[', '{', '('];
         // use a slightly different technique for iterating through 
         // the characters in the string. this time, use the closing 
         // position of the previous iteration as the starting index for the 
@@ -1736,7 +1737,7 @@ internal class Program
 
         Console.WriteLine("Functions Returning Arrays\n");
         int target = 30;
-        int[] coins = new int[] { 5, 5, 50, 25, 25, 10, 5 };
+        int[] coins = [5, 5, 50, 25, 25, 10, 5];
         int[,] resultT = TwoCoins(coins, target);
 
         if (resultT.Length == 0)
@@ -1958,13 +1959,16 @@ internal class Program
         Console.WriteLine("");
 
         Console.WriteLine("############################ Exceptions / Errors\n");
-        // divide by zero
+
+        // divide by zero exception
         double float1 = 3000.0;
         double float2 = 0.0;
         int number1 = 3000;
         int number2 = 0;
         try
         {
+            // Debug.Assert(float2 != 0, "divide by zero via float2");
+            // Debug.Assert(number2 != 0, "divide by zero via number2");
             Console.WriteLine(float1 / float2);
             Console.WriteLine(number1 / number2);
             Console.WriteLine("Exit program");
@@ -1974,7 +1978,7 @@ internal class Program
             Console.WriteLine("Do not divide by 0" + e);
         }
 
-        // exception within function propagating
+        // exception from within a function propagating up
         try
         {
             Process1();
@@ -1983,9 +1987,7 @@ internal class Program
         {
             Console.WriteLine("An exception has occurred");
         }
-
         Console.WriteLine("Exit program");
-
         static void Process1()
         {
             try
@@ -1998,7 +2000,6 @@ internal class Program
             }
 
         }
-
         static void WriteMessage()
         {
             double float1 = 3000.0;
@@ -2009,7 +2010,6 @@ internal class Program
             Console.WriteLine(float1 / float2);
             Console.WriteLine(number1 / number2);
         }
-
         // inputValues is used to store numeric values entered by a user
         string[] inputValues = ["three", "9999999999", "0", "2"];
         foreach (string inputValue in inputValues)
@@ -2052,14 +2052,13 @@ internal class Program
         try
         {
             string? str = null;
-            int length = str.Length;
+            int length = str.Length; // deliberate warning
             Console.WriteLine("String Length: " + length);
         }
         catch (NullReferenceException ex)
         {
             Console.WriteLine("Error: The reference is null. " + ex.Message);
         }
-
         try
         {
             int[] numbersException = new int[5];
@@ -2070,7 +2069,6 @@ internal class Program
         {
             Console.WriteLine("Error: Index out of range. " + ex.Message);
         }
-
         try
         {
             int num3 = 10;
@@ -2082,7 +2080,179 @@ internal class Program
         {
             Console.WriteLine("Error: Cannot divide by zero. " + ex.Message);
         }
-
         Console.WriteLine("Exiting program.");
+
+        // throwing multiple exceptions
+        try
+        {
+            OperatingProcedure1();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine("Exiting application.");
+        }
+
+        static void OperatingProcedure1()
+        {
+            string[][] userEnteredValues =
+            [
+                ["1", "two", "3"],
+                ["0", "1", "2"]
+            ];
+
+            foreach (string[] userEntries in userEnteredValues)
+            {
+                try
+                {
+                    BusinessProcess1(userEntries);
+                }
+                catch (Exception ex)
+                {
+                    if (ex.StackTrace.Contains("BusinessProcess1"))
+                    {
+                        if (ex is FormatException)
+                        {
+                            Console.WriteLine(ex.Message);
+                            Console.WriteLine("Corrective action taken in OperatingProcedure1");
+                        }
+                        else if (ex is DivideByZeroException)
+                        {
+                            Console.WriteLine(ex.Message);
+                            Console.WriteLine("Partial correction in OperatingProcedure1 - further action required");
+
+                            // re-throw the original exception
+                            throw;
+                        }
+                        else
+                        {
+                            // create a new exception object that wraps the original exception
+                            throw new ApplicationException("An error occurred - ", ex);
+                        }
+                    }
+                }
+
+            }
+        }
+        static void BusinessProcess1(string[] userEntries)
+        {
+            int valueEntered;
+
+            foreach (string userValue in userEntries)
+            {
+                try
+                {
+                    valueEntered = int.Parse(userValue);
+
+                    checked
+                    {
+                        int calculatedValue = 4 / valueEntered;
+                    }
+                }
+                catch (FormatException)
+                {
+                    FormatException invalidFormatException = new FormatException("FormatException: User input values in 'BusinessProcess1' must be valid integers");
+                    throw invalidFormatException;
+                }
+                catch (DivideByZeroException)
+                {
+                    DivideByZeroException unexpectedDivideByZeroException = new DivideByZeroException("DivideByZeroException: Calculation in 'BusinessProcess1' encountered an unexpected divide by zero");
+                    throw unexpectedDivideByZeroException;
+
+                }
+            }
+        }
+
+        // user input exception handling
+        // Prompt the user for the lower and upper bounds
+        Console.Write("Enter the lower bound: ");
+        int lowerBound = int.Parse(Console.ReadLine());
+        Console.Write("Enter the upper bound: ");
+        int upperBound = int.Parse(Console.ReadLine());
+
+        decimal averageValue = 0;
+        // Calculate the sum of the even numbers between the bounds
+        averageValue = AverageOfEvenNumbers(lowerBound, upperBound);
+        // Display the value returned by AverageOfEvenNumbers in the console
+        Console.WriteLine($"The average of even numbers between {lowerBound} and {upperBound} is {averageValue}.");
+        // Wait for user input
+        Console.ReadLine();
+        static decimal AverageOfEvenNumbers(int lowerBound, int upperBound)
+        {
+            int sum = 0;
+            int count = 0;
+            decimal average = 0;
+            for (int i = lowerBound; i <= upperBound; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    sum += i;
+                    count++;
+                }
+            }
+            average = (decimal)sum / count;
+            return average;
+        }
+
+        // create and throw exceptions challenge
+        string[][] userEnteredValues =
+        [
+            ["1", "2", "3"],
+            ["1", "two", "3"],
+            ["0", "1", "2"]
+        ];
+        try
+        {
+            Workflow1(userEnteredValues);
+            Console.WriteLine("'Workflow1' completed successfully.");
+        }
+        catch (DivideByZeroException ex)
+        {
+            Console.WriteLine("An error occurred during 'Workflow1'.");
+            Console.WriteLine(ex.Message);
+        }
+        static void Workflow1(string[][] userEnteredValues)
+        {
+            foreach (string[] userEntries in userEnteredValues)
+            {
+                try
+                {
+                    Process1Again(userEntries);
+                    Console.WriteLine("'Process1Again' completed successfully.");
+                    Console.WriteLine();
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("'Process1Again' encountered an issue, process aborted.");
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine();
+                }
+            }
+        }
+        static void Process1Again(String[] userEntries)
+        {
+            foreach (string userValue in userEntries)
+            {
+                bool integerFormat = int.TryParse(userValue, out int valueEntered);
+                if (integerFormat == true)
+                {
+                    if (valueEntered != 0)
+                    {
+                        checked
+                        {
+                            int calculatedValue = 4 / valueEntered;
+                        }
+                    }
+                    else
+                    {
+                        throw new DivideByZeroException("Invalid data. User input values must be non-zero values.");
+                    }
+                }
+                else
+                {
+                    throw new FormatException("Invalid data. User input values must be valid integers.");
+                }
+            }
+        }
     }
 }
